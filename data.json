@@ -1,0 +1,44 @@
+{
+  "updated": "2026-10-17",
+  "adverts_read": 2144,
+  "verdicts": {
+    "UNKNOWN": 11,
+    "OK": 243,
+    "PAID": 26,
+    "DEAD": 82,
+    "GATE": 679,
+    "LOCKED": 1103
+  },
+  "categories": [
+    {
+      "key": "ai",
+      "fit_median": 85,
+      "scored": 31
+    },
+    {
+      "key": "recruit",
+      "fit_median": 76,
+      "scored": 16
+    },
+    {
+      "key": "language",
+      "fit_median": 35,
+      "scored": 2
+    },
+    {
+      "key": "support",
+      "fit_median": 60,
+      "scored": 51
+    },
+    {
+      "key": "backoffice",
+      "fit_median": 54,
+      "scored": 80
+    },
+    {
+      "key": "other",
+      "fit_median": 40,
+      "scored": 70
+    }
+  ]
+}
