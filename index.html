@@ -18,8 +18,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' text-anchor='middle' fill='%23fbfbfa'%3EHA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=10">
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=13">
 <script>
   // Pick language before first paint so nothing flickers.
   (function () {
@@ -51,17 +51,21 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-text">
-    <p class="where">
+    <div class="id-row">
+      <img class="avatar" src="img/hadi.jpg" alt="Hadi Azhar" width="800" height="1000" fetchpriority="high">
+      <div>
+        <p class="id-name">Hadi Azhar</p>
+        <p class="id-meta">Batam, Indonesia · <time data-clock>UTC+7</time></p>
+      </div>
       <span class="badge badge-green"><span data-l="en">Available now</span><span data-l="id">Siap mulai</span></span>
-      <span>Batam, Indonesia · UTC+7</span>
-    </p>
+    </div>
     <h1>
       <span data-l="en">I get real work done with AI, and I check the results before I trust&nbsp;them.</span>
       <span data-l="id">Saya menyelesaikan kerja nyata dengan AI, dan mengecek hasilnya sebelum&nbsp;percaya.</span>
     </h1>
     <p class="lead">
-      <span data-l="en">I'm not a programmer. I tell Claude what I need, try what it gives me on real things, and keep going until it works. I learn something new every week this way. The biggest result so far is a job-search system that has read <b data-num="adverts_read">2,144</b> job adverts for me.</span>
-      <span data-l="id">Saya bukan programmer. Saya bilang ke Claude apa yang saya butuhkan, mencoba hasilnya pada hal nyata, dan terus lanjut sampai berhasil. Dengan cara ini saya belajar hal baru tiap minggu. Hasil terbesar sejauh ini adalah sistem pencari kerja yang sudah membaca <b data-num="adverts_read">2.144</b> iklan lowongan untuk saya.</span>
+      <span data-l="en">I'm not a programmer. I tell Claude what I need, test what it gives me on real things, and decide what happens next. The panel shows a real exchange from my job-search system.</span>
+      <span data-l="id">Saya bukan programmer. Saya bilang ke Claude apa yang saya butuhkan, mengetes hasilnya pada hal nyata, dan memutuskan langkah berikutnya. Panel ini menampilkan percakapan asli dari sistem pencari kerja saya.</span>
     </p>
     <p class="focus">
       <span data-l="en"><b>Open to</b> AI data &amp; evaluation, AI automation and operations roles. Remote, or onsite in Batam. I can cover Asian and European hours.</span>
@@ -71,12 +75,57 @@
       <a class="btn btn-solid" href="Hadi-Azhar-CV.pdf" download>
         <span data-l="en">Download CV</span><span data-l="id">Unduh CV</span> <span class="meta">PDF</span>
       </a>
-      <a class="btn btn-quiet" href="mailto:hadiazhar13@gmail.com">hadiazhar13@gmail.com</a>
+      <button type="button" class="btn btn-quiet" data-copy="hadiazhar13@gmail.com">
+        <span class="copy-label">hadiazhar13@gmail.com</span>
+        <span class="copy-done" aria-hidden="true"><span data-l="en">Copied</span><span data-l="id">Tersalin</span></span>
+      </button>
+      <span class="sr-only" aria-live="polite" data-copy-status></span>
     </div>
   </div>
-  <figure class="portrait">
-    <img src="img/hadi.jpg" alt="Hadi Azhar, smiling, in glasses and a grey jacket" width="800" height="1000" fetchpriority="high">
+
+  <!-- Real exchange, 13 Oct 2026, paraphrased from the session transcript and refresh.log. -->
+  <figure class="chat" aria-labelledby="chat-cap" data-chat>
+    <div class="chat-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+    <figcaption id="chat-cap" class="chat-cap">
+      <span data-l="en">Real session · 13 Oct 2026 · job-search system</span>
+      <span data-l="id">Sesi asli · 13 Okt 2026 · sistem cari kerja</span>
+    </figcaption>
+    <ol class="chat-log">
+      <li class="msg ai">
+        <span class="who">Claude</span>
+        <p><span data-l="en">The automatic job scan has failed two days running. Last good scan: 10 Oct.</span><span data-l="id">Scan lowongan otomatis gagal dua hari berturut. Scan terakhir yang sukses: 10 Okt.</span></p>
+      </li>
+      <li class="msg me">
+        <span class="who">Hadi</span>
+        <p><span data-l="en">Fix that first.</span><span data-l="id">Benerin itu dulu.</span></p>
+      </li>
+      <li class="msg ai">
+        <span class="who">Claude</span>
+        <p><span data-l="en">Found it: the laptop is asleep at 02:00, so the task wakes for a second and freezes. Fix: try every hour and at log-in, count one finished run per day. This changes a Windows scheduled task. OK?</span><span data-l="id">Ketemu: laptop tidur jam 02:00, jadi tugasnya bangun sedetik lalu beku. Solusi: coba tiap jam dan saat login, hitung satu putaran selesai per hari. Ini mengubah jadwal tugas Windows. Boleh?</span></p>
+      </li>
+      <li class="msg me">
+        <span class="who">Hadi</span>
+        <p><span data-l="en">OK, go.</span><span data-l="id">Oke, gas.</span></p>
+      </li>
+      <li class="msg ai">
+        <span class="who">Claude</span>
+        <p><span data-l="en">Done. Full scan finished: 9 of 9 steps in 35 minutes.</span><span data-l="id">Beres. Scan penuh selesai: 9 dari 9 langkah dalam 35 menit.</span></p>
+      </li>
+      <li class="msg check">
+        <span class="who"><span data-l="en">Checked</span><span data-l="id">Dicek</span></span>
+        <p><span data-l="en">Ran every morning since: 14, 15, 16, 17, 18 Oct.</span><span data-l="id">Jalan tiap pagi sejak itu: 14, 15, 16, 17, 18 Okt.</span></p>
+      </li>
+    </ol>
+    <button type="button" class="chat-replay" data-chat-replay><span data-l="en">Replay</span><span data-l="id">Putar ulang</span></button>
   </figure>
+</section>
+
+<!-- ============ PROOF NUMBERS ============ -->
+<section class="stats" aria-label="Job-search system in numbers">
+  <div class="stat"><b data-count="adverts_read">2,144</b><span><span data-l="en">job adverts read in full</span><span data-l="id">iklan lowongan dibaca utuh</span></span></div>
+  <div class="stat"><b data-count-static="281">281</b><span><span data-l="en">company hiring pages watched</span><span data-l="id">halaman rekrutmen perusahaan dipantau</span></span></div>
+  <div class="stat"><b data-count-static="64">64</b><span><span data-l="en">test cases from real adverts</span><span data-l="id">kasus uji dari iklan asli</span></span></div>
+  <div class="stat"><b data-count-static="14">14</b><span><span data-l="en">AI agents, each with one job</span><span data-l="id">agent AI, masing-masing satu tugas</span></span></div>
 </section>
 
 <!-- ============ HOW I WORK ============ -->
@@ -113,6 +162,38 @@
       <span data-l="en">Job boards show a title and a city. The real answer is in the small print: a degree requirement, a language, a visa lock, a fee for a "starter kit". This system collects adverts from many sources every morning, reads each one in full, and only shows me the ones I can actually get. Tap a step to see what it does.</span>
       <span data-l="id">Situs lowongan cuma menampilkan judul dan kota. Jawaban sebenarnya ada di tulisan kecil: syarat ijazah, syarat bahasa, kunci visa, biaya "starter kit". Sistem ini mengumpulkan iklan dari banyak sumber tiap pagi, membaca tiap iklan sampai habis, dan hanya menunjukkan yang benar-benar bisa saya dapat. Ketuk satu langkah untuk melihat kerjanya.</span>
     </p>
+
+    <figure class="net" aria-label="Diagram: job feeds go through a rules filter to research agents, then an agent that reads each advert and one that scores it, and finally to Hadi, who decides.">
+      <svg viewBox="0 0 760 250" role="img" aria-hidden="true" focusable="false">
+        <g class="edges">
+          <path style="--d:0" d="M128 125 C160 125 168 125 196 125"/>
+          <path style="--d:1" d="M300 125 C330 125 330 41 360 41"/>
+          <path style="--d:1" d="M300 125 C330 125 330 83 360 83"/>
+          <path style="--d:1" d="M300 125 C330 125 330 125 360 125"/>
+          <path style="--d:1" d="M300 125 C330 125 330 167 360 167"/>
+          <path style="--d:1" d="M300 125 C330 125 330 209 360 209"/>
+          <path style="--d:2" d="M452 41 C485 41 485 100 516 100"/>
+          <path style="--d:2" d="M452 83 C485 83 485 100 516 100"/>
+          <path style="--d:2" d="M452 125 C485 125 485 100 516 100"/>
+          <path style="--d:2" d="M452 167 C485 167 485 150 516 150"/>
+          <path style="--d:2" d="M452 209 C485 209 485 150 516 150"/>
+          <path style="--d:3" d="M620 100 C640 100 640 125 660 125"/>
+          <path style="--d:3" d="M620 150 C640 150 640 125 660 125"/>
+        </g>
+        <g class="nodes">
+          <g style="--d:0"><rect x="8" y="103" width="120" height="44" rx="8"/><text x="68" y="122">Job feeds</text><text class="sub" x="68" y="137">281 hiring pages</text></g>
+          <g style="--d:1"><rect x="196" y="103" width="104" height="44" rx="8"/><text x="248" y="122">Rules</text><text class="sub" x="248" y="137">64 test cases</text></g>
+          <g style="--d:2"><rect x="360" y="27" width="92" height="28" rx="14"/><text x="406" y="45">Bima · Batam</text></g>
+          <g style="--d:2"><rect x="360" y="69" width="92" height="28" rx="14"/><text x="406" y="87">Indra · Remote</text></g>
+          <g style="--d:2"><rect x="360" y="111" width="92" height="28" rx="14"/><text x="406" y="129">Arya · AI</text></g>
+          <g style="--d:2"><rect x="360" y="153" width="92" height="28" rx="14"/><text x="406" y="171">Mei · SG</text></g>
+          <g style="--d:2"><rect x="360" y="195" width="92" height="28" rx="14"/><text x="406" y="213">Oscar · New</text></g>
+          <g style="--d:3"><rect x="516" y="80" width="104" height="40" rx="8"/><text x="568" y="98">Jodi</text><text class="sub" x="568" y="112">reads, quotes</text></g>
+          <g style="--d:3"><rect x="516" y="130" width="104" height="40" rx="8"/><text x="568" y="148">Citra</text><text class="sub" x="568" y="162">scores vs CV</text></g>
+          <g style="--d:4" class="you"><rect x="660" y="101" width="92" height="48" rx="10"/><text x="706" y="122">Hadi</text><text class="sub" x="706" y="137">decides</text></g>
+        </g>
+      </svg>
+    </figure>
 
     <div class="flow" data-flow>
       <div class="flow-steps" role="tablist" aria-label="Steps">
@@ -175,7 +256,7 @@
       <section class="fault" aria-labelledby="fault-h">
         <h4 id="fault-h"><span data-l="en">One problem we fixed</span><span data-l="id">Satu masalah yang kami perbaiki</span></h4>
         <dl>
-          <div><dt><span data-l="en">What went wrong</span><span data-l="id">Masalahnya</span></dt><dd><span data-l="en">The daily update stopped halfway three mornings in a row (11 to 13 Oct 2026). I noticed because the morning summary had old data.</span><span data-l="id">Pembaruan harian berhenti di tengah jalan tiga pagi berturut-turut (11 sampai 13 Okt 2026). Saya sadar karena ringkasan pagi berisi data lama.</span></dd></div>
+          <div><dt><span data-l="en">What went wrong</span><span data-l="id">Masalahnya</span></dt><dd><span data-l="en">The daily update stopped halfway three mornings in a row (11 to 13 Oct 2026). The morning summary flagged it, and I made it the first thing to fix.</span><span data-l="id">Pembaruan harian berhenti di tengah jalan tiga pagi berturut-turut (11 sampai 13 Okt 2026). Ringkasan pagi menandainya, dan saya jadikan itu hal pertama yang diperbaiki.</span></dd></div>
           <div><dt><span data-l="en">Why</span><span data-l="id">Penyebab</span></dt><dd><span data-l="en">The laptop was asleep at 02:00, so the task started and then froze.</span><span data-l="id">Laptop sedang tidur jam 02:00, jadi tugasnya mulai lalu beku.</span></dd></div>
           <div><dt><span data-l="en">Fix</span><span data-l="id">Perbaikan</span></dt><dd><span data-l="en">It now tries every hour, waits for internet, and counts only one finished run per day.</span><span data-l="id">Sekarang mencoba tiap jam, menunggu internet, dan hanya menghitung satu putaran selesai per hari.</span></dd></div>
         </dl>
@@ -324,6 +405,6 @@
   <p>© 2026 Hadi Azhar</p>
 </footer>
 
-<script src="main.js?v=10" defer></script>
+<script src="main.js?v=13" defer></script>
 </body>
 </html>

@@ -73,6 +73,13 @@
       var v = data[el.dataset.num];
       if (v != null) el.textContent = fmt(v);
     });
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var v = data[el.getAttribute('data-count')];
+      if (v != null) el.textContent = fmt(v);
+    });
+    document.querySelectorAll('[data-count-static]').forEach(function (el) {
+      el.textContent = fmt(+el.getAttribute('data-count-static'));
+    });
     document.querySelectorAll('[data-v]').forEach(function (el) {
       var v = data.verdicts[el.dataset.v];
       if (v != null) el.textContent = fmt(v);
@@ -107,17 +114,110 @@
     .then(function (d) { data = d; renderNumbers(); renderCats(); })
     .catch(function () { /* keep the fallback */ });
 
+  // ---------- Live Batam clock ----------
+  var clock = document.querySelector('[data-clock]');
+  function tick() {
+    if (!clock) return;
+    try {
+      clock.textContent = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' })
+        .format(new Date()) + ' WIB';
+    } catch (e) { clock.textContent = 'UTC+7'; }
+  }
+  tick(); setInterval(tick, 30000);
+
+  // ---------- Click to copy email ----------
+  var status = document.querySelector('[data-copy-status]');
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy');
+      var done = function () {
+        b.classList.add('copied');
+        if (status) status.textContent = root.lang === 'id' ? 'Email tersalin' : 'Email copied';
+        setTimeout(function () { b.classList.remove('copied'); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { location.href = 'mailto:' + text; });
+      } else {
+        location.href = 'mailto:' + text;
+      }
+    });
+  });
+
+  // ---------- Proof numbers ----------
+  var stats = Array.prototype.slice.call(document.querySelectorAll('[data-count], [data-count-static]'));
+  function statTarget(el) {
+    return el.hasAttribute('data-count') ? data[el.getAttribute('data-count')] : +el.getAttribute('data-count-static');
+  }
+  function countUp() {
+    var t0 = performance.now(), dur = 1100;
+    (function frame(now) {
+      var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+      stats.forEach(function (el) { el.textContent = fmt(Math.round(statTarget(el) * e)); });
+      if (p < 1) requestAnimationFrame(frame);
+    })(t0);
+  }
+
+  // ---------- Chat replay ----------
+  var chat = document.querySelector('[data-chat]');
+  var msgs = chat ? Array.prototype.slice.call(chat.querySelectorAll('.msg')) : [];
+  var timers = [];
+  function play() {
+    timers.forEach(clearTimeout); timers = [];
+    chat.classList.remove('done'); chat.classList.add('playing');
+    msgs.forEach(function (m) { m.classList.remove('on'); });
+    var oldTyping = chat.querySelector('.typing'); if (oldTyping) oldTyping.remove();
+    var t = 300;
+    msgs.forEach(function (m, i) {
+      var isAi = m.classList.contains('ai');
+      if (isAi) {
+        timers.push(setTimeout(function () {
+          var ty = document.createElement('li'); ty.className = 'typing'; ty.setAttribute('aria-hidden', 'true');
+          ty.innerHTML = '<i></i><i></i><i></i>'; m.parentNode.insertBefore(ty, m);
+        }, t));
+        t += 900;
+      }
+      timers.push(setTimeout(function () {
+        var ty = chat.querySelector('.typing'); if (ty) ty.remove();
+        m.classList.add('on');
+        if (i === msgs.length - 1) chat.classList.add('done');
+      }, t));
+      t += isAi ? 1100 : 700;
+    });
+  }
+  var replay = document.querySelector('[data-chat-replay]');
+  if (replay) replay.addEventListener('click', play);
+
   // ---------- Scroll reveals ----------
   // Classes are added here, so with JS off or reduced motion everything is simply visible.
   var cats = document.querySelector('.cats');
   if (!('IntersectionObserver' in window) || reduceMotion) {
     if (cats) cats.classList.add('in');
+    if (chat) chat.classList.add('done');
     return;
   }
+
+  // Chat and numbers play once, the first time they are on screen.
+  // Hide the messages straight away so they do not flash before the replay starts.
+  if (chat) chat.classList.add('playing');
+  var once = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      once.unobserve(e.target);
+      if (e.target === chat) play(); else countUp();
+    });
+  }, { threshold: 0.35 });
+  if (chat) once.observe(chat);
+  var statsBox = document.querySelector('.stats');
+  if (statsBox) once.observe(statsBox);
+  // Safety net: some embedded or throttled browsers never fire the observer. Never leave the
+  // hero chat empty: if it has not started 1.5 s after load, play it anyway.
+  setTimeout(function () {
+    if (chat && !timers.length && !chat.classList.contains('done')) { once.unobserve(chat); play(); }
+  }, 1500);
   // Document order matters: when one block shows, every block above it shows too, so a
   // nav jump that skips past a section (no intersection ever fires for it) never leaves it hidden.
   var targets = Array.prototype.slice.call(document.querySelectorAll(
-    '.how-list, .section-head, .feature, .cats, .grid > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
+    '.how-list, .section-head, .feature, .net, .cats, .grid > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
   targets.forEach(function (el) { if (el !== cats) el.classList.add('reveal'); });
 
   function show(upTo) {
