@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=16">
 <script>
   // Pick language before first paint so nothing flickers.
   (function () {
@@ -201,8 +201,68 @@
       <div class="flow-panel" role="tabpanel" id="sp-2" aria-labelledby="st-2" hidden>
         <p><span data-l="en">Before anything reaches the list, rules drop the obvious no-gos: residents of another country only, a degree I don't have, a language I don't speak. The rules are checked against 65 test cases written from real advert text, so a fix for one case can't quietly break another.</span><span data-l="id">Sebelum masuk daftar, aturan membuang yang jelas tidak mungkin: khusus penduduk negara lain, ijazah yang tidak saya punya, bahasa yang tidak saya kuasai. Aturannya dicek dengan 65 kasus uji dari teks iklan asli, jadi perbaikan satu kasus tidak diam-diam merusak kasus lain.</span></p>
       </div>
-      <div class="flow-panel" role="tabpanel" id="sp-3" aria-labelledby="st-3" hidden>
-        <p><span data-l="en">Separately, AI research agents search the web on their own, one per kind of job (Batam, remote Indonesia, AI automation, Singapore). Two more look for job types and job sites I had not thought of, and must show 10 real adverts before a new idea counts. Everything they find goes into the same list as the morning scan.</span><span data-l="id">Terpisah dari itu, agent riset AI mencari sendiri di web, satu per jenis pekerjaan (Batam, remote Indonesia, otomasi AI, Singapura). Dua lagi mencari jenis kerja dan situs lowongan yang belum terpikir oleh saya, dan wajib menunjukkan 10 iklan asli sebelum ide baru dihitung. Semua temuan mereka masuk ke daftar yang sama dengan scan pagi.</span></p>
+      <div class="flow-panel wide" role="tabpanel" id="sp-3" aria-labelledby="st-3" hidden>
+        <p><span data-l="en">Separately, AI research agents search the web on their own. Each one has its own patch and its own hard rules, so one bad search cannot spoil the others. What they keep goes into the same list as the morning scan.</span><span data-l="id">Terpisah dari itu, agent riset AI mencari sendiri di web. Masing-masing punya wilayah dan aturan wajibnya sendiri, jadi satu pencarian yang salah tidak merusak yang lain. Yang mereka simpan masuk ke daftar yang sama dengan scan pagi.</span></p>
+        <ul class="agents">
+          <li>
+            <p class="agent-h"><b>Bima</b> <span data-l="en">Batam onsite</span><span data-l="id">Batam di kantor</span></p>
+            <p class="agent-src"><span data-l="en">JobStreet, LinkedIn Batam, employer sites, factories, shipyards</span><span data-l="id">JobStreet, LinkedIn Batam, situs perusahaan, pabrik, galangan kapal</span></p>
+            <ul class="agent-rules">
+              <li><span data-l="en">Batam or Bintan stated in the advert</span><span data-l="id">Batam atau Bintan tertulis di iklan</span></li>
+              <li><span data-l="en">Pay not below the Batam minimum wage (about Rp 5 million)</span><span data-l="id">Gaji tidak di bawah UMK Batam (sekitar Rp 5 juta)</span></li>
+              <li><span data-l="en">High-school level accepted, no degree demanded</span><span data-l="id">Lulusan SMA/SMK diterima, tidak wajib S1/D3</span></li>
+              <li><span data-l="en">No age or gender limit I don't meet, no call-centre work</span><span data-l="id">Tidak ada batas usia atau gender yang tidak saya penuhi, bukan call center</span></li>
+            </ul>
+          </li>
+          <li>
+            <p class="agent-h"><b>Indra</b> <span data-l="en">Remote from Indonesia</span><span data-l="id">Remote dari Indonesia</span></p>
+            <p class="agent-src">Lever, Greenhouse, Ashby, Workable, JobStreet, LinkedIn</p>
+            <ul class="agent-rules">
+              <li><span data-l="en">Indonesia allowed in writing. Remote locked to other countries killed 101 of 257 leads</span><span data-l="id">Indonesia diizinkan secara tertulis. Remote khusus negara lain menggugurkan 101 dari 257 lead</span></li>
+              <li><span data-l="en">Chat, email or tickets, not phone-first</span><span data-l="id">Chat, email, atau tiket, bukan telepon</span></li>
+              <li><span data-l="en">No degree as a must, 1 to 2 years at most</span><span data-l="id">Tidak wajib ijazah, pengalaman maksimal 1 sampai 2 tahun</span></li>
+              <li><span data-l="en">At least USD 8 an hour; night shifts in Batam time are flagged</span><span data-l="id">Minimal USD 8 per jam; shift malam waktu Batam ditandai</span></li>
+            </ul>
+          </li>
+          <li>
+            <p class="agent-h"><b>Arya</b> <span data-l="en">AI automation</span><span data-l="id">Otomasi AI</span></p>
+            <p class="agent-src"><span data-l="en">Automation agencies, AI consultancies, agent-building studios</span><span data-l="id">Agensi otomasi, konsultan AI, studio pembuat agent</span></p>
+            <ul class="agent-rules">
+              <li><span data-l="en">Open to Indonesia, worldwide or APAC</span><span data-l="id">Terbuka untuk Indonesia, seluruh dunia, atau APAC</span></li>
+              <li><span data-l="en">Junior, no hard degree requirement</span><span data-l="id">Level junior, tidak wajib ijazah</span></li>
+              <li><span data-l="en">Small firms with no opening are saved as people to pitch</span><span data-l="id">Firma kecil tanpa lowongan disimpan sebagai calon yang bisa ditawari</span></li>
+              <li><span data-l="en">Courses and pay-to-join schemes don't count</span><span data-l="id">Kursus dan skema bayar-untuk-gabung tidak dihitung</span></li>
+            </ul>
+          </li>
+          <li>
+            <p class="agent-h"><b>Mei</b> <span data-l="en">Singapore &amp; Malaysia, remote</span><span data-l="id">Singapura &amp; Malaysia, remote</span></p>
+            <p class="agent-src"><span data-l="en">JobStreet SG, MyCareersFuture, LinkedIn, employer sites</span><span data-l="id">JobStreet SG, MyCareersFuture, LinkedIn, situs perusahaan</span></p>
+            <ul class="agent-rules">
+              <li><span data-l="en">The worker can sit in Indonesia</span><span data-l="id">Pekerjanya boleh tinggal di Indonesia</span></li>
+              <li><span data-l="en">No work pass needed, no Singpass-only applications</span><span data-l="id">Tidak butuh izin kerja, bukan lamaran khusus Singpass</span></li>
+              <li><span data-l="en">English, no Mandarin requirement, no degree as a must</span><span data-l="id">Bahasa Inggris, tidak wajib Mandarin, tidak wajib ijazah</span></li>
+            </ul>
+          </li>
+          <li>
+            <p class="agent-h"><b>Oscar</b> <span data-l="en">New kinds of job</span><span data-l="id">Jenis kerja baru</span></p>
+            <p class="agent-src"><span data-l="en">Tries one category I hadn't considered: interpreting, back office without phone, tech support</span><span data-l="id">Mencoba satu kategori yang belum terpikir: penerjemah lisan, back office tanpa telepon, dukungan teknis</span></p>
+            <ul class="agent-rules">
+              <li><span data-l="en">Proves it with 10 real adverts; kept only if 3 pass</span><span data-l="id">Dibuktikan dengan 10 iklan asli; disimpan kalau minimal 3 lolos</span></li>
+              <li><span data-l="en">A failed category is logged and never tried again</span><span data-l="id">Kategori yang gagal dicatat dan tidak dicoba lagi</span></li>
+              <li><span data-l="en">Never stretches my CV to make a category pass</span><span data-l="id">Tidak melebih-lebihkan CV saya supaya kategori lolos</span></li>
+            </ul>
+          </li>
+          <li>
+            <p class="agent-h"><b>Dewi</b> <span data-l="en">New job sites</span><span data-l="id">Situs lowongan baru</span></p>
+            <p class="agent-src"><span data-l="en">Local Indonesian boards, Batam channels, company career pages, agencies</span><span data-l="id">Situs lowongan lokal, kanal lowongan Batam, halaman karier perusahaan, agensi</span></p>
+            <ul class="agent-rules">
+              <li><span data-l="en">One new source per run, proven with 10 real adverts</span><span data-l="id">Satu sumber baru per putaran, dibuktikan dengan 10 iklan asli</span></li>
+              <li><span data-l="en">Kept only if 3 of 10 pass; failed sources never retried</span><span data-l="id">Disimpan kalau 3 dari 10 lolos; sumber gagal tidak dicoba lagi</span></li>
+              <li><span data-l="en">No sites that need a login</span><span data-l="id">Tidak memakai situs yang butuh login</span></li>
+            </ul>
+          </li>
+        </ul>
+        <p class="who"><span data-l="en">Every agent reads the advert itself, quotes the sentence behind every claim, and never applies or creates accounts.</span><span data-l="id">Semua agent membaca iklannya sendiri, mengutip kalimat di balik setiap klaim, dan tidak pernah melamar atau membuat akun.</span></p>
       </div>
       <div class="flow-panel" role="tabpanel" id="sp-4" aria-labelledby="st-4" hidden>
         <p><span data-l="en">Jodi opens every advert on the list in full and gives one verdict, together with the exact sentence that proves it. No quote, no verdict. That rule stops the AI from guessing. Of the adverts read so far:</span><span data-l="id">Jodi membuka setiap iklan di daftar sampai habis dan memberi satu putusan, beserta kalimat persis yang membuktikannya. Tanpa kutipan, tanpa putusan. Aturan itu yang membuat AI tidak menebak. Dari iklan yang sudah dibaca:</span></p>
@@ -395,6 +455,6 @@
   <p>© 2026 Hadi Azhar</p>
 </footer>
 
-<script src="main.js?v=14" defer></script>
+<script src="main.js?v=16" defer></script>
 </body>
 </html>

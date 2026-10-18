@@ -301,6 +301,17 @@ body::after {
   animation: panel-in 180ms var(--ease);
 }
 .flow-panel > p + dl { margin-top: var(--s-4); }
+.flow-panel.wide { max-width: none; }
+.agents { list-style: none; margin: var(--s-5) 0 var(--s-4); padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr)); gap: var(--s-3); }
+@media (max-width: 34rem) { .flow-panel { padding: var(--s-4); } }
+.agents > li { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: var(--s-4); display: grid; gap: var(--s-2); align-content: start; }
+.agent-h { display: flex; align-items: baseline; gap: var(--s-2); flex-wrap: wrap; }
+.agent-h b { font-size: var(--t-base); }
+.agent-h span { font-family: var(--mono); font-size: 0.72rem; color: var(--blue); background: var(--blue-bg); padding: 0.1rem 0.45rem; border-radius: 4px; }
+.agent-src { font-size: 0.8rem; color: var(--ink-2); line-height: 1.45; }
+.agent-rules { list-style: none; margin: var(--s-1) 0 0; padding: 0; display: grid; gap: 6px; font-size: 0.84rem; line-height: 1.45; }
+.agent-rules li { position: relative; padding-left: 1.1rem; }
+.agent-rules li::before { content: ""; position: absolute; left: 0.15rem; top: 0.55em; width: 0.4rem; height: 0.4rem; border-radius: 50%; border: 1.5px solid var(--green); }
 @keyframes panel-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .flow-panel { animation: none; } }
 .tally { margin: 0; }
