@@ -287,7 +287,6 @@ main, .foot { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   font-size: var(--t-sm); padding: 0.3rem 0.7rem; border-radius: 6px;
   background: var(--surface); border: 1px solid var(--border); color: var(--ink);
 }
-.tools-learning li { background: var(--surface-2); color: var(--ink-2); border-style: dashed; }
 
 /* ---------- Letter ---------- */
 .letter h2 { font-size: var(--t-sm); font-weight: 500; color: var(--ink-2); }
