@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <script>
   // Pick language before first paint so nothing flickers.
   (function () {
@@ -123,8 +123,8 @@
 <!-- ============ PROOF NUMBERS ============ -->
 <section class="stats" aria-label="Job-search system in numbers">
   <div class="stat"><b data-count="adverts_read">2,144</b><span><span data-l="en">job adverts read in full</span><span data-l="id">iklan lowongan dibaca utuh</span></span></div>
-  <div class="stat"><b data-count-static="281">281</b><span><span data-l="en">company hiring pages watched</span><span data-l="id">halaman rekrutmen perusahaan dipantau</span></span></div>
-  <div class="stat"><b data-count-static="64">64</b><span><span data-l="en">test cases from real adverts</span><span data-l="id">kasus uji dari iklan asli</span></span></div>
+  <div class="stat"><b data-count-static="17">17</b><span><span data-l="en">job feeds scanned every morning</span><span data-l="id">feed lowongan discan tiap pagi</span></span></div>
+  <div class="stat"><b data-count-static="65">65</b><span><span data-l="en">test cases from real adverts</span><span data-l="id">kasus uji dari iklan asli</span></span></div>
   <div class="stat"><b data-count-static="14">14</b><span><span data-l="en">AI agents, each with one job</span><span data-l="id">agent AI, masing-masing satu tugas</span></span></div>
 </section>
 
@@ -163,42 +163,32 @@
       <span data-l="id">Situs lowongan cuma menampilkan judul dan kota. Jawaban sebenarnya ada di tulisan kecil: syarat ijazah, syarat bahasa, kunci visa, biaya "starter kit". Sistem ini mengumpulkan iklan dari banyak sumber tiap pagi, membaca tiap iklan sampai habis, dan hanya menunjukkan yang benar-benar bisa saya dapat. Ketuk satu langkah untuk melihat kerjanya.</span>
     </p>
 
-    <figure class="net" aria-label="Diagram: job feeds go through a rules filter to research agents, then an agent that reads each advert and one that scores it, and finally to Hadi, who decides.">
-      <svg viewBox="0 0 760 250" role="img" aria-hidden="true" focusable="false">
+    <figure class="net" aria-label="Diagram: two sources feed one shortlist. A morning script scans job feeds and passes them through tested rules; separately, AI research agents search the web. The shortlist goes to Jodi, who reads each advert, then Citra, who scores it against the CV, and finally to Hadi, who decides.">
+      <svg viewBox="0 36 760 180" role="img" aria-hidden="true" focusable="false">
         <g class="edges">
-          <path style="--d:0" d="M128 125 C160 125 168 125 196 125"/>
-          <path style="--d:1" d="M300 125 C330 125 330 41 360 41"/>
-          <path style="--d:1" d="M300 125 C330 125 330 83 360 83"/>
-          <path style="--d:1" d="M300 125 C330 125 330 125 360 125"/>
-          <path style="--d:1" d="M300 125 C330 125 330 167 360 167"/>
-          <path style="--d:1" d="M300 125 C330 125 330 209 360 209"/>
-          <path style="--d:2" d="M452 41 C485 41 485 100 516 100"/>
-          <path style="--d:2" d="M452 83 C485 83 485 100 516 100"/>
-          <path style="--d:2" d="M452 125 C485 125 485 100 516 100"/>
-          <path style="--d:2" d="M452 167 C485 167 485 150 516 150"/>
-          <path style="--d:2" d="M452 209 C485 209 485 150 516 150"/>
-          <path style="--d:3" d="M620 100 C640 100 640 125 660 125"/>
-          <path style="--d:3" d="M620 150 C640 150 640 125 660 125"/>
+          <path style="--d:0" d="M128 70 L148 70"/>
+          <path style="--d:1" d="M250 70 C266 70 266 125 282 125"/>
+          <path style="--d:1" d="M250 180 C266 180 266 125 282 125"/>
+          <path style="--d:2" d="M372 125 L400 125"/>
+          <path style="--d:3" d="M500 125 L526 125"/>
+          <path style="--d:4" d="M626 125 L652 125"/>
         </g>
         <g class="nodes">
-          <g style="--d:0"><rect x="8" y="103" width="120" height="44" rx="8"/><text x="68" y="122">Job feeds</text><text class="sub" x="68" y="137">281 hiring pages</text></g>
-          <g style="--d:1"><rect x="196" y="103" width="104" height="44" rx="8"/><text x="248" y="122">Rules</text><text class="sub" x="248" y="137">64 test cases</text></g>
-          <g style="--d:2"><rect x="360" y="27" width="92" height="28" rx="14"/><text x="406" y="45">Bima · Batam</text></g>
-          <g style="--d:2"><rect x="360" y="69" width="92" height="28" rx="14"/><text x="406" y="87">Indra · Remote</text></g>
-          <g style="--d:2"><rect x="360" y="111" width="92" height="28" rx="14"/><text x="406" y="129">Arya · AI</text></g>
-          <g style="--d:2"><rect x="360" y="153" width="92" height="28" rx="14"/><text x="406" y="171">Mei · SG</text></g>
-          <g style="--d:2"><rect x="360" y="195" width="92" height="28" rx="14"/><text x="406" y="213">Oscar · New</text></g>
-          <g style="--d:3"><rect x="516" y="80" width="104" height="40" rx="8"/><text x="568" y="98">Jodi</text><text class="sub" x="568" y="112">reads, quotes</text></g>
-          <g style="--d:3"><rect x="516" y="130" width="104" height="40" rx="8"/><text x="568" y="148">Citra</text><text class="sub" x="568" y="162">scores vs CV</text></g>
-          <g style="--d:4" class="you"><rect x="660" y="101" width="92" height="48" rx="10"/><text x="706" y="122">Hadi</text><text class="sub" x="706" y="137">decides</text></g>
+          <g style="--d:0"><rect x="8" y="48" width="120" height="44" rx="8"/><text x="68" y="67">Morning scan</text><text class="sub" x="68" y="82">17 feeds, no AI</text></g>
+          <g style="--d:1"><rect x="148" y="48" width="102" height="44" rx="8"/><text x="199" y="67">Rules</text><text class="sub" x="199" y="82">65 test cases</text></g>
+          <g style="--d:0"><rect x="8" y="158" width="242" height="44" rx="8"/><text x="129" y="177">Research agents</text><text class="sub" x="129" y="192">Bima, Indra, Arya, Mei, Oscar, Dewi</text></g>
+          <g style="--d:2"><rect x="282" y="103" width="90" height="44" rx="8"/><text x="327" y="122">Shortlist</text><text class="sub" x="327" y="137">one list</text></g>
+          <g style="--d:3"><rect x="400" y="103" width="100" height="44" rx="8"/><text x="450" y="122">Jodi</text><text class="sub" x="450" y="137">reads, quotes</text></g>
+          <g style="--d:4"><rect x="526" y="103" width="100" height="44" rx="8"/><text x="576" y="122">Citra</text><text class="sub" x="576" y="137">scores vs CV</text></g>
+          <g style="--d:5" class="you"><rect x="652" y="101" width="100" height="48" rx="10"/><text x="702" y="122">Hadi</text><text class="sub" x="702" y="137">decides</text></g>
         </g>
       </svg>
     </figure>
 
     <div class="flow" data-flow>
       <div class="flow-steps" role="tablist" aria-label="Steps">
-        <button role="tab" id="st-1" aria-controls="sp-1" aria-selected="true" tabindex="0"><span class="n">1</span><span data-l="en">Collect</span><span data-l="id">Kumpulkan</span></button>
-        <button role="tab" id="st-2" aria-controls="sp-2" aria-selected="false" tabindex="-1"><span class="n">2</span><span data-l="en">Filter</span><span data-l="id">Saring</span></button>
+        <button role="tab" id="st-1" aria-controls="sp-1" aria-selected="true" tabindex="0"><span class="n">1</span><span data-l="en">Scan</span><span data-l="id">Scan</span></button>
+        <button role="tab" id="st-2" aria-controls="sp-2" aria-selected="false" tabindex="-1"><span class="n">2</span><span data-l="en">Rules</span><span data-l="id">Aturan</span></button>
         <button role="tab" id="st-3" aria-controls="sp-3" aria-selected="false" tabindex="-1"><span class="n">3</span><span data-l="en">Research</span><span data-l="id">Riset</span></button>
         <button role="tab" id="st-4" aria-controls="sp-4" aria-selected="false" tabindex="-1"><span class="n">4</span><span data-l="en">Read</span><span data-l="id">Baca</span></button>
         <button role="tab" id="st-5" aria-controls="sp-5" aria-selected="false" tabindex="-1"><span class="n">5</span><span data-l="en">Score</span><span data-l="id">Nilai</span></button>
@@ -206,10 +196,16 @@
       </div>
 
       <div class="flow-panel" role="tabpanel" id="sp-1" aria-labelledby="st-1">
-        <p><span data-l="en">A scheduled script pulls 17 job feeds, the JobStreet search, LinkedIn's public listings and 281 company hiring pages. Duplicates are removed first. No AI in this step: plain code is cheaper and never makes things up.</span><span data-l="id">Skrip terjadwal menarik 17 feed lowongan, pencarian JobStreet, daftar publik LinkedIn, dan 281 halaman rekrutmen perusahaan. Duplikat dibuang dulu. Langkah ini tanpa AI: kode biasa lebih murah dan tidak pernah mengarang.</span></p>
+        <p><span data-l="en">Every morning a script pulls 17 job feeds plus the JobStreet and LinkedIn searches, and removes duplicates. No AI in this step: plain code is cheaper and never makes things up.</span><span data-l="id">Tiap pagi sebuah skrip menarik 17 feed lowongan plus pencarian JobStreet dan LinkedIn, lalu membuang duplikat. Langkah ini tanpa AI: kode biasa lebih murah dan tidak pernah mengarang.</span></p>
       </div>
       <div class="flow-panel" role="tabpanel" id="sp-2" aria-labelledby="st-2" hidden>
-        <p><span data-l="en">Rules check each advert: is it only for residents of another country, does it need a degree, a language I don't speak, years I don't have, or money from the applicant. Of every advert read so far:</span><span data-l="id">Aturan mengecek tiap iklan: apakah khusus penduduk negara lain, wajib ijazah, bahasa yang tidak saya kuasai, pengalaman bertahun-tahun, atau minta uang dari pelamar. Dari semua iklan yang sudah dibaca:</span></p>
+        <p><span data-l="en">Before anything reaches the list, rules drop the obvious no-gos: residents of another country only, a degree I don't have, a language I don't speak. The rules are checked against 65 test cases written from real advert text, so a fix for one case can't quietly break another.</span><span data-l="id">Sebelum masuk daftar, aturan membuang yang jelas tidak mungkin: khusus penduduk negara lain, ijazah yang tidak saya punya, bahasa yang tidak saya kuasai. Aturannya dicek dengan 65 kasus uji dari teks iklan asli, jadi perbaikan satu kasus tidak diam-diam merusak kasus lain.</span></p>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="sp-3" aria-labelledby="st-3" hidden>
+        <p><span data-l="en">Separately, AI research agents search the web on their own, one per kind of job (Batam, remote Indonesia, AI automation, Singapore). Two more look for job types and job sites I had not thought of, and must show 10 real adverts before a new idea counts. Everything they find goes into the same list as the morning scan.</span><span data-l="id">Terpisah dari itu, agent riset AI mencari sendiri di web, satu per jenis pekerjaan (Batam, remote Indonesia, otomasi AI, Singapura). Dua lagi mencari jenis kerja dan situs lowongan yang belum terpikir oleh saya, dan wajib menunjukkan 10 iklan asli sebelum ide baru dihitung. Semua temuan mereka masuk ke daftar yang sama dengan scan pagi.</span></p>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="sp-4" aria-labelledby="st-4" hidden>
+        <p><span data-l="en">Jodi opens every advert on the list in full and gives one verdict, together with the exact sentence that proves it. No quote, no verdict. That rule stops the AI from guessing. Of the adverts read so far:</span><span data-l="id">Jodi membuka setiap iklan di daftar sampai habis dan memberi satu putusan, beserta kalimat persis yang membuktikannya. Tanpa kutipan, tanpa putusan. Aturan itu yang membuat AI tidak menebak. Dari iklan yang sudah dibaca:</span></p>
         <dl class="tally">
           <div><dt><span data-l="en">Only for another country</span><span data-l="id">Khusus negara lain</span></dt><dd data-v="LOCKED">1,103</dd></div>
           <div><dt><span data-l="en">Needs something I don't have</span><span data-l="id">Syarat yang tidak saya punya</span></dt><dd data-v="GATE">679</dd></div>
@@ -218,14 +214,8 @@
           <div class="pass"><dt><span data-l="en">Worth a look</span><span data-l="id">Layak dilihat</span></dt><dd data-v="OK">243</dd></div>
         </dl>
       </div>
-      <div class="flow-panel" role="tabpanel" id="sp-3" aria-labelledby="st-3" hidden>
-        <p><span data-l="en">Each kind of job has its own AI research agent with its own instructions and notes, so one bad search does not spoil the others. Two more agents look for job types and job sites I had not thought of, and must show 10 real adverts before a new idea counts.</span><span data-l="id">Tiap jenis pekerjaan punya agent riset AI sendiri, dengan arahan dan catatan sendiri, jadi satu pencarian yang salah tidak merusak yang lain. Dua agent lagi mencari jenis kerja dan situs lowongan yang belum terpikir oleh saya, dan wajib menunjukkan 10 iklan asli sebelum ide baru dihitung.</span></p>
-      </div>
-      <div class="flow-panel" role="tabpanel" id="sp-4" aria-labelledby="st-4" hidden>
-        <p><span data-l="en">An agent opens the full advert and gives one verdict, together with the exact sentence from the advert that proves it. No quote, no verdict. That rule stops the AI from guessing.</span><span data-l="id">Satu agent membuka iklan lengkap dan memberi satu putusan, beserta kalimat persis dari iklan yang membuktikannya. Tanpa kutipan, tanpa putusan. Aturan itu yang membuat AI tidak menebak.</span></p>
-      </div>
       <div class="flow-panel" role="tabpanel" id="sp-5" aria-labelledby="st-5" hidden>
-        <p><span data-l="en">Another agent lists every requirement in the advert and marks it met, partly met or not met against my real CV, then scores it out of 100. If a must-have is missing, the score cannot go above 40. It also picks which of my CVs to send.</span><span data-l="id">Agent lain mendaftar tiap syarat di iklan dan menandainya terpenuhi, sebagian, atau tidak, dibandingkan CV asli saya, lalu memberi skor dari 100. Kalau ada syarat wajib yang tidak terpenuhi, skornya tidak bisa lewat 40. Agent ini juga memilih CV mana yang dikirim.</span></p>
+        <p><span data-l="en">Citra lists every requirement in the advert and marks it met, partly met or not met against my real CV, then scores it out of 100. If a must-have is missing, the score cannot go above 40. It also picks which of my CVs to send.</span><span data-l="id">Citra mendaftar tiap syarat di iklan dan menandainya terpenuhi, sebagian, atau tidak, dibandingkan CV asli saya, lalu memberi skor dari 100. Kalau ada syarat wajib yang tidak terpenuhi, skornya tidak bisa lewat 40. Agent ini juga memilih CV mana yang dikirim.</span></p>
       </div>
       <div class="flow-panel" role="tabpanel" id="sp-6" aria-labelledby="st-6" hidden>
         <p><span data-l="en">What is left lands in a morning summary with the CV to use and how to apply. I read it, decide, and press submit myself. Another agent watches my inbox for replies.</span><span data-l="id">Yang tersisa masuk ke ringkasan pagi, lengkap dengan CV yang dipakai dan cara melamarnya. Saya baca, saya putuskan, dan saya sendiri yang menekan kirim. Agent lain memantau kotak masuk untuk balasan.</span></p>
@@ -405,6 +395,6 @@
   <p>© 2026 Hadi Azhar</p>
 </footer>
 
-<script src="main.js?v=13" defer></script>
+<script src="main.js?v=14" defer></script>
 </body>
 </html>
