@@ -116,7 +116,7 @@
     return;
   }
   var targets = document.querySelectorAll(
-    '.entry h2, .entry .prose, .flow, .story, .fault, .shot-row, .letter blockquote, .contact h2');
+    '.entry h2, .entry .prose, .flow, .story, .fault, .shot-row, .record h2, .record-list, .tools, .letter blockquote, .contact h2');
   targets.forEach(function (el) { el.classList.add('reveal'); });
 
   var io = new IntersectionObserver(function (entries) {
