@@ -112,23 +112,26 @@
   var cats = document.querySelector('.cats');
   if (!('IntersectionObserver' in window) || reduceMotion) {
     if (cats) cats.classList.add('in');
-    document.querySelectorAll('.signoff').forEach(function (s) { s.classList.add('in'); });
     return;
   }
-  var targets = document.querySelectorAll(
-    '.entry h2, .entry .prose, .flow, .story, .fault, .shot-row, .record h2, .record-list, .tools, .letter blockquote, .contact h2');
-  targets.forEach(function (el) { el.classList.add('reveal'); });
+  // Document order matters: when one block shows, every block above it shows too, so a
+  // nav jump that skips past a section (no intersection ever fires for it) never leaves it hidden.
+  var targets = Array.prototype.slice.call(document.querySelectorAll(
+    '.how-list, .section-head, .feature, .cats, .grid > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
+  targets.forEach(function (el) { if (el !== cats) el.classList.add('reveal'); });
 
+  function show(upTo) {
+    for (var k = 0; k <= upTo; k++) {
+      if (!targets[k].classList.contains('in')) { targets[k].classList.add('in'); io.unobserve(targets[k]); }
+    }
+  }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      // Blocks already above the viewport (a nav jump went past them) just show, no animation owed.
+      // Already above the viewport (jumped past) counts as seen.
       if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
-      e.target.classList.add('in');
-      io.unobserve(e.target);
+      show(targets.indexOf(e.target));
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  }, { threshold: [0, 0.15], rootMargin: '0px 0px -8% 0px' });
 
   targets.forEach(function (el) { io.observe(el); });
-  if (cats) io.observe(cats);
-  document.querySelectorAll('.signoff').forEach(function (s) { io.observe(s); });
 })();
