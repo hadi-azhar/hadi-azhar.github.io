@@ -479,3 +479,9 @@ body::after {
   .reel .r169 { --vh: calc(82vw * 9 / 16); }
   .reel-foot { text-align: left; }
 }
+
+/* video job agent di kartu utama */
+.ja-video { margin: var(--s-5) 0 0; }
+.vbox.wide { width: 100%; max-width: 52rem; }
+.vbox.wide video { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.ja-video figcaption { margin-top: var(--s-2, .5rem); color: var(--ink-2); font-size: var(--t-xs); max-width: 62ch; }
