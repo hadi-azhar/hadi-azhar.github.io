@@ -264,14 +264,7 @@ body::after {
 .span-2 .shot { border-bottom: 0; border-right: 1px solid var(--border); }
 .shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; transition: transform 300ms var(--ease); }
 .span-2 .shot img { height: 100%; }
-.vid-pair { display: flex; gap: 0.75rem; align-items: center; padding: 0.75rem; }
-.vid-pair video { display: block; height: auto; border-radius: 6px; background: #1b1714; }
-.vid-pair .v916 { flex: 0.36 1 0; min-width: 0; aspect-ratio: 9 / 16; }
-.vid-pair .v169 { flex: 1 1 0; min-width: 0; aspect-ratio: 16 / 9; }
 @media (max-width: 46rem) {
-  .vid-pair { flex-wrap: wrap; justify-content: center; }
-  .vid-pair .v916 { flex: 0 0 62%; }
-  .vid-pair .v169 { flex: 0 0 100%; }
   .grid { grid-template-columns: 1fr; }
   .card.span-2 { grid-template-columns: 1fr; }
   .span-2 .shot { border-right: 0; border-bottom: 1px solid var(--border); }
@@ -450,3 +443,37 @@ body::after {
   .reveal.in { opacity: 1; transform: none; }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Videos ---------- */
+.videos { padding: var(--s-9) 0 0; }
+.reel { margin-top: var(--s-5); display: flex; gap: var(--s-5); justify-content: center; align-items: flex-start; }
+.reel .clip { margin: 0; display: flex; flex-direction: column; gap: var(--s-3); }
+.reel .r916 { --vh: clamp(15rem, 30vw, 21rem); }
+.reel .r169 { --vh: clamp(15rem, 30vw, 21rem); }
+.vbox { position: relative; display: block; padding: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+  background: #efe6d6; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 10px 28px -16px rgba(60,40,20,.35);
+  transition: transform 400ms var(--ease), box-shadow 400ms var(--ease); }
+.vbox video { display: block; height: var(--vh); width: auto; max-width: 100%; }
+.r916 video { aspect-ratio: 9 / 16; }
+.r169 video { aspect-ratio: 16 / 9; }
+.vbox:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(0,0,0,.05), 0 18px 34px -18px rgba(60,40,20,.45); }
+.vbox:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.snd { position: absolute; right: 10px; bottom: 10px; font: 600 var(--t-xs)/1 var(--font); color: #fff; background: rgba(17,17,17,.62);
+  padding: 6px 10px; border-radius: 999px; pointer-events: none; }
+.snd::before { content: "\266A"; margin-right: 6px; }
+.vbox.on .snd { background: #346538; }
+.reel figcaption { display: flex; flex-direction: column; gap: 4px; max-width: 34ch; }
+.reel .r169 + figcaption { max-width: 46ch; }
+.reel figcaption b { font-weight: 600; letter-spacing: -0.01em; }
+.reel figcaption span { color: var(--ink-2); font-size: var(--t-sm); }
+.reel figcaption code { font: 500 var(--t-xs)/1.4 var(--mono); color: var(--ink-2); }
+.reel-foot { margin-top: var(--s-5); color: var(--ink-2); font-size: var(--t-sm); text-align: center; }
+@media (max-width: 46rem) {
+  .reel { justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--gutter) var(--s-3);
+    margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); scrollbar-width: thin; }
+  .reel .clip { scroll-snap-align: center; flex: 0 0 auto; }
+  .reel .r916 { --vh: min(70vh, 30rem); }
+  .reel .r169 { --vh: auto; }
+  .reel .r169 video { width: 82vw; height: auto; }
+  .reel-foot { text-align: left; }
+}

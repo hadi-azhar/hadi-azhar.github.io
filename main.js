@@ -234,4 +234,36 @@
   }, { threshold: [0, 0.15], rootMargin: '0px 0px -8% 0px' });
 
   targets.forEach(function (el) { io.observe(el); });
+
+  // ---------- Videos: main sendiri saat terlihat, ketuk untuk suara ----------
+  var vids = Array.prototype.slice.call(document.querySelectorAll('.vbox video'));
+  var saveData = navigator.connection && navigator.connection.saveData;
+  var auto = !reduceMotion && !saveData && 'IntersectionObserver' in window;
+  if (auto) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+          if (v.preload !== 'auto') { v.preload = 'auto'; }
+          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+        } else if (!v.paused) { v.pause(); }
+      });
+    }, { threshold: [0, 0.5] });
+    vids.forEach(function (v) { io.observe(v); });
+  }
+  vids.forEach(function (v) {
+    var box = v.parentNode;
+    box.addEventListener('click', function () {
+      var turnOn = v.muted || v.paused;
+      vids.forEach(function (o) { if (o !== v) { o.muted = true; o.parentNode.classList.remove('on'); } });
+      if (turnOn) {
+        v.muted = false; v.currentTime = 0;
+        var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+        box.classList.add('on');
+      } else {
+        v.muted = true; box.classList.remove('on');
+        if (!auto) v.pause();
+      }
+    });
+  });
 })();
