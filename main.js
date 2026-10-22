@@ -11,6 +11,7 @@
     });
     renderNumbers();
     renderCats();
+    if (typeof relabelVideos === 'function') relabelVideos();
   }
   document.querySelectorAll('[data-set-lang]').forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.dataset.setLang); });
@@ -235,35 +236,58 @@
 
   targets.forEach(function (el) { io.observe(el); });
 
-  // ---------- Videos: main sendiri saat terlihat, ketuk untuk suara ----------
+  // ---------- Videos: main sendiri tanpa suara saat terlihat. Klik: suara -> jeda -> putar dgn suara ----------
   var vids = Array.prototype.slice.call(document.querySelectorAll('.vbox video'));
   var saveData = navigator.connection && navigator.connection.saveData;
   var auto = !reduceMotion && !saveData && 'IntersectionObserver' in window;
+  var TXT = { en: { sound: 'Sound', pause: 'Pause', play: 'Play', on: 'Turn sound on: ', off: 'Pause: ', go: 'Play: ' },
+              id: { sound: 'Suara', pause: 'Jeda', play: 'Putar', on: 'Nyalakan suara: ', off: 'Jeda: ', go: 'Putar: ' } };
+  function vlabel(box) {
+    var t = TXT[root.lang === 'id' ? 'id' : 'en'];
+    var st = box.classList.contains('on') ? 'on' : box.classList.contains('stopped') ? 'stopped' : 'muted';
+    box.querySelector('.snd').textContent = st === 'on' ? t.pause : st === 'stopped' ? t.play : t.sound;
+    var nm = box.getAttribute(root.lang === 'id' ? 'data-name-id' : 'data-name-en') || '';
+    box.setAttribute('aria-label', (st === 'on' ? t.off : st === 'stopped' ? t.go : t.on) + nm);
+  }
+  function relabelVideos() {
+    if (!vids) return;
+    vids.forEach(function (v) { vlabel(v.parentNode); });
+    var reel = document.querySelector('.reel');
+    if (reel) reel.setAttribute('aria-label', root.lang === 'id' ? (reel.getAttribute('data-label-id') || 'Video') : 'Videos');
+  }
+  function vplay(v) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
   if (auto) {
-    var io = new IntersectionObserver(function (es) {
+    var vio = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
-        var v = e.target;
+        var v = e.target, box = v.parentNode;
         if (e.isIntersecting && e.intersectionRatio >= 0.5) {
-          if (v.preload !== 'auto') { v.preload = 'auto'; }
-          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
-        } else if (!v.paused) { v.pause(); }
+          if (box.classList.contains('stopped')) return;
+          if (v.preload !== 'auto') v.preload = 'auto';
+          vplay(v);
+        } else {
+          if (!v.paused) v.pause();
+          if (box.classList.contains('on')) { v.muted = true; box.classList.remove('on'); vlabel(box); }
+        }
       });
     }, { threshold: [0, 0.5] });
-    vids.forEach(function (v) { io.observe(v); });
+    vids.forEach(function (v) { vio.observe(v); });
   }
   vids.forEach(function (v) {
     var box = v.parentNode;
     box.addEventListener('click', function () {
-      var turnOn = v.muted || v.paused;
-      vids.forEach(function (o) { if (o !== v) { o.muted = true; o.parentNode.classList.remove('on'); } });
-      if (turnOn) {
-        v.muted = false; v.currentTime = 0;
-        var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
-        box.classList.add('on');
+      if (box.classList.contains('on')) {
+        v.pause(); v.muted = true; box.classList.remove('on'); box.classList.add('stopped');
       } else {
-        v.muted = true; box.classList.remove('on');
-        if (!auto) v.pause();
+        vids.forEach(function (o) {
+          if (o !== v && o.parentNode.classList.contains('on')) { o.muted = true; o.parentNode.classList.remove('on'); vlabel(o.parentNode); }
+        });
+        var fresh = !box.classList.contains('stopped') && !v.paused;
+        box.classList.remove('stopped'); box.classList.add('on');
+        v.muted = false; if (fresh) v.currentTime = 0;
+        vplay(v);
       }
+      vlabel(box);
     });
   });
+  relabelVideos();
 })();
