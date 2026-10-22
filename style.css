@@ -264,7 +264,14 @@ body::after {
 .span-2 .shot { border-bottom: 0; border-right: 1px solid var(--border); }
 .shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; transition: transform 300ms var(--ease); }
 .span-2 .shot img { height: 100%; }
+.vid-pair { display: flex; gap: 0.75rem; align-items: center; padding: 0.75rem; }
+.vid-pair video { display: block; height: auto; border-radius: 6px; background: #1b1714; }
+.vid-pair .v916 { flex: 0.36 1 0; min-width: 0; aspect-ratio: 9 / 16; }
+.vid-pair .v169 { flex: 1 1 0; min-width: 0; aspect-ratio: 16 / 9; }
 @media (max-width: 46rem) {
+  .vid-pair { flex-wrap: wrap; justify-content: center; }
+  .vid-pair .v916 { flex: 0 0 62%; }
+  .vid-pair .v169 { flex: 0 0 100%; }
   .grid { grid-template-columns: 1fr; }
   .card.span-2 { grid-template-columns: 1fr; }
   .span-2 .shot { border-right: 0; border-bottom: 1px solid var(--border); }
