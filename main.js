@@ -84,14 +84,14 @@
   // Fallback mirrors data.json at build time, so the page still reads right if the fetch fails.
   // Application counts are deliberately absent here and in data.json.
   var data = {
-    updated: '2026-10-17',
-    adverts_read: 2144,
-    verdicts: { LOCKED: 1103, GATE: 679, OK: 243, DEAD: 82, PAID: 26 },
+    updated: '2026-10-23',
+    adverts_read: 2773,
+    verdicts: { LOCKED: 1484, GATE: 857, OK: 293, DEAD: 96, PAID: 29 },
     categories: [
-      { key: 'ai', fit_median: 85, scored: 31 },
-      { key: 'recruit', fit_median: 76, scored: 16 },
-      { key: 'support', fit_median: 60, scored: 51 },
-      { key: 'backoffice', fit_median: 54, scored: 80 }
+      { key: 'ai', fit_median: 75, scored: 38 },
+      { key: 'recruit', fit_median: 78, scored: 19 },
+      { key: 'support', fit_median: 60, scored: 62 },
+      { key: 'backoffice', fit_median: 58, scored: 94 }
     ]
   };
 
