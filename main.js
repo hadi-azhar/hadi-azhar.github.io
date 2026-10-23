@@ -3,15 +3,19 @@
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ---------- Language ----------
-  function setLang(l) {
+  // applyLang only paints (used at start); setLang is the button click and also remembers it.
+  function applyLang(l) {
     root.lang = l;
-    try { localStorage.setItem('lang', l); } catch (e) {}
     document.querySelectorAll('[data-set-lang]').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.dataset.setLang === l));
     });
     renderNumbers();
     renderCats();
     if (typeof relabelVideos === 'function') relabelVideos();
+  }
+  function setLang(l) {
+    try { localStorage.setItem('lang', l); } catch (e) {}
+    applyLang(l);
   }
   document.querySelectorAll('[data-set-lang]').forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.dataset.setLang); });
@@ -108,7 +112,7 @@
     }).join('');
   }
 
-  setLang(root.lang === 'id' ? 'id' : 'en');
+  applyLang(root.lang === 'id' ? 'id' : 'en');
 
   fetch('data.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -218,7 +222,7 @@
   // Document order matters: when one block shows, every block above it shows too, so a
   // nav jump that skips past a section (no intersection ever fires for it) never leaves it hidden.
   var targets = Array.prototype.slice.call(document.querySelectorAll(
-    '.how-list, .section-head, .feature, .net, .cats, .grid > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
+    '.how-list, .section-head, .feature, .net, .cats, .plist > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
   targets.forEach(function (el) { if (el !== cats) el.classList.add('reveal'); });
 
   function show(upTo) {

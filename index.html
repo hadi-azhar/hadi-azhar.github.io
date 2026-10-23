@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=18">
+<link rel="stylesheet" href="style.css?v=20">
 <script>
   // Pick language before first paint so nothing flickers.
   (function () {
@@ -157,7 +157,11 @@
 
   <!-- PROJECT: JOB AGENT -->
   <article class="project feature" aria-labelledby="p1-h">
-    <p class="kicker"><span class="badge"><span data-l="en">Runs every morning</span><span data-l="id">Jalan tiap pagi</span></span></p>
+    <header class="p-head">
+      <span class="p-num" aria-hidden="true">01</span>
+      <ul class="p-meta"><li><span data-l="en">Automation</span><span data-l="id">Otomasi</span></li><li>Claude</li><li>2026</li></ul>
+      <span class="badge"><span data-l="en">Runs every morning</span><span data-l="id">Jalan tiap pagi</span></span>
+    </header>
     <h3 id="p1-h"><span data-l="en">A job-search system that reads the adverts for me</span><span data-l="id">Sistem cari kerja yang membaca iklan untuk saya</span></h3>
     <p class="prose">
       <span data-l="en">Job boards show a title and a city. What matters is in the small print: a degree requirement, a language, a visa lock, a fee for a "starter kit". Every morning this system collects adverts from many sources and reads each one in full. I only see the ones I could actually get. Tap a step to see what it does.</span>
@@ -324,34 +328,45 @@
     </div>
   </article>
 
-  <!-- SMALLER PROJECTS -->
-  <div class="grid">
-    <article class="project card span-2" aria-labelledby="p3-h">
+  <!-- SMALLER PROJECTS: one row each -->
+  <div class="plist">
+    <article class="project prow" aria-labelledby="p3-h">
       <a class="shot" href="https://haza.pages.dev/" target="_blank" rel="noopener">
         <img src="img/haza.jpg" alt="HAZA shop homepage" width="1280" height="800" loading="lazy">
       </a>
-      <div class="card-body">
+      <div class="prow-body">
+        <header class="p-head">
+          <span class="p-num" aria-hidden="true">02</span>
+          <ul class="p-meta"><li><span data-l="en">Live website</span><span data-l="id">Website live</span></li><li>Claude, WhatsApp, Google Sheets</li></ul>
+        </header>
         <h3 id="p3-h"><span data-l="en">A live shop website with WhatsApp orders</span><span data-l="id">Website toko live, pesanan lewat WhatsApp</span></h3>
         <p class="prose"><span data-l="en">For HAZA, a clothing brand I'm starting. The basket turns into a ready-written WhatsApp order, and the waitlist form saves each email into a Google Sheet, with no server to pay for.</span><span data-l="id">Untuk HAZA, merek pakaian yang sedang saya rintis. Keranjang belanja berubah jadi pesan WhatsApp yang sudah tertulis rapi, dan formulir daftar tunggu menyimpan tiap email ke Google Sheet, tanpa server yang harus dibayar.</span></p>
         <p class="links"><a class="link" href="https://haza.pages.dev/" target="_blank" rel="noopener">haza.pages.dev <span aria-hidden="true">↗</span></a></p>
       </div>
     </article>
 
-
-    <article class="project card" aria-labelledby="p2-h">
-      <div class="card-body">
-        <h3 id="p2-h"><span data-l="en">Ava, a personal AI assistant</span><span data-l="id">Ava, asisten AI pribadi</span></h3>
-        <p class="prose"><span data-l="en">Runs online and switches between Claude and Gemini depending on the task. It keeps notes so it remembers earlier conversations. The part I asked for most: a daily spending limit, so it stops instead of running up a bill.</span><span data-l="id">Berjalan online dan berpindah antara Claude dan Gemini sesuai tugasnya. Dia menyimpan catatan, jadi ingat obrolan sebelumnya. Yang paling saya minta: batas belanja harian, biar dia berhenti dan tagihan tidak menumpuk.</span></p>
+    <article class="project prow flip" aria-labelledby="p4-h">
+      <figure class="shot fit">
+        <img src="img/finance.jpg" alt="Finance dashboard with sample numbers" width="1280" height="800" loading="lazy">
+      </figure>
+      <div class="prow-body">
+        <header class="p-head">
+          <span class="p-num" aria-hidden="true">03</span>
+          <ul class="p-meta"><li>Dashboard</li><li>Claude</li><li>EUR + IDR</li></ul>
+        </header>
+        <h3 id="p4-h"><span data-l="en">A money dashboard in two currencies</span><span data-l="id">Dashboard keuangan dua mata uang</span></h3>
+        <p class="prose"><span data-l="en">Made while working in Slovakia and sending money home: savings, loans and goals in euro and rupiah on one screen. Screenshot uses sample numbers.</span><span data-l="id">Dibuat waktu kerja di Slovakia dan mengirim uang ke rumah: tabungan, pinjaman, dan target dalam euro dan rupiah di satu layar. Tangkapan layar pakai angka contoh.</span></p>
       </div>
     </article>
 
-    <article class="project card" aria-labelledby="p4-h">
-      <figure class="shot">
-        <img src="img/finance.jpg" alt="Finance dashboard with sample numbers" width="1280" height="800" loading="lazy">
-      </figure>
-      <div class="card-body">
-        <h3 id="p4-h"><span data-l="en">A money dashboard in two currencies</span><span data-l="id">Dashboard keuangan dua mata uang</span></h3>
-        <p class="prose"><span data-l="en">Made while working in Slovakia and sending money home: savings, loans and goals in euro and rupiah on one screen. Screenshot uses sample numbers.</span><span data-l="id">Dibuat waktu kerja di Slovakia dan mengirim uang ke rumah: tabungan, pinjaman, dan target dalam euro dan rupiah di satu layar. Tangkapan layar pakai angka contoh.</span></p>
+    <article class="project prow text-only" aria-labelledby="p2-h">
+      <div class="prow-body">
+        <header class="p-head">
+          <span class="p-num" aria-hidden="true">04</span>
+          <ul class="p-meta"><li><span data-l="en">AI assistant</span><span data-l="id">Asisten AI</span></li><li>Claude, Gemini</li></ul>
+        </header>
+        <h3 id="p2-h"><span data-l="en">Ava, a personal AI assistant</span><span data-l="id">Ava, asisten AI pribadi</span></h3>
+        <p class="prose"><span data-l="en">Runs online and switches between Claude and Gemini depending on the task. It keeps notes so it remembers earlier conversations. The part I asked for most: a daily spending limit, so it stops instead of running up a bill.</span><span data-l="id">Berjalan online dan berpindah antara Claude dan Gemini sesuai tugasnya. Dia menyimpan catatan, jadi ingat obrolan sebelumnya. Yang paling saya minta: batas belanja harian, biar dia berhenti dan tagihan tidak menumpuk.</span></p>
       </div>
     </article>
   </div>
@@ -362,7 +377,7 @@
   <div class="section-head">
     <h2 id="videos-h"><span data-l="en">Short videos that explain a system</span><span data-l="id">Video pendek yang menjelaskan sistem</span></h2>
     <p><span data-l="en">Paper cut-out stop motion, made in code. Each one goes from the problem to the result in under 20 seconds. Click or tap a video for sound.</span><span data-l="id">Stop motion potongan kertas, dibuat dengan kode. Tiap video jalan dari masalah sampai hasil, kurang dari 20 detik. Klik atau ketuk video untuk menyalakan suara.</span></p>
-    <p class="offer"><span data-l="en">I make these for small businesses, along with small web apps and spreadsheets.</span><span data-l="id">Saya bikin video seperti ini untuk usaha kecil, juga aplikasi web kecil dan spreadsheet.</span> <a class="link" href="/portofolio/"><span data-l="en">See the work (in Indonesian)</span><span data-l="id">Lihat contoh kerjanya</span> <span aria-hidden="true">↗</span></a></p>
+    <p class="offer"><span data-l="en">I make these for small businesses, along with small web apps and spreadsheets.</span><span data-l="id">Saya bikin video seperti ini untuk usaha kecil, juga aplikasi web kecil dan spreadsheet.</span> <a class="link" href="/portofolio/"><span data-l="en">See the work</span><span data-l="id">Lihat contoh kerjanya</span> <span aria-hidden="true">↗</span></a></p>
   </div>
   <div class="reel" tabindex="0" aria-label="Videos" data-label-id="Video">
     <figure class="clip">
@@ -375,7 +390,7 @@
       <figcaption>
         <b><span data-l="en">WhatsApp orders to a daily recap</span><span data-l="id">Pesanan WhatsApp jadi rekap harian</span></b>
         <span><span data-l="en">Chat orders become cards, get sorted, and end up in one list.</span><span data-l="id">Pesanan dari chat jadi kartu, disortir, lalu masuk satu daftar.</span></span>
-        <code>18 s · 9:16</code>
+        <code><span class="v-num">01</span> 18 s · 9:16</code>
       </figcaption>
     </figure>
     <figure class="clip">
@@ -388,7 +403,7 @@
       <figcaption>
         <b><span data-l="en">Bookkeeping spreadsheet for a small shop</span><span data-l="id">Spreadsheet pembukuan toko kecil</span></b>
         <span><span data-l="en">Receipts go into one sheet, and the monthly profit adds itself up.</span><span data-l="id">Struk masuk satu sheet, laba bulanan terhitung sendiri.</span></span>
-        <code>15 s · 16:9</code>
+        <code><span class="v-num">02</span> 15 s · 16:9</code>
       </figcaption>
     </figure>
     <figure class="clip">
@@ -401,11 +416,11 @@
       <figcaption>
         <b><span data-l="en">Member check app</span><span data-l="id">Aplikasi cek anggota</span></b>
         <span><span data-l="en">Type a name and see straight away if they're registered.</span><span data-l="id">Ketik nama, langsung kelihatan terdaftar atau belum.</span></span>
-        <code>12 s · 9:16</code>
+        <code><span class="v-num">03</span> 12 s · 9:16</code>
       </figcaption>
     </figure>
   </div>
-  <p class="reel-foot"><span data-l="en">Names and numbers in the videos are samples.</span><span data-l="id">Nama dan angka di video adalah contoh.</span> <a class="link" href="/portofolio/"><span data-l="en">More videos and demos (page in Indonesian)</span><span data-l="id">Video dan demo lainnya</span> <span aria-hidden="true">↗</span></a></p>
+  <p class="reel-foot"><span data-l="en">Names and numbers in the videos are samples.</span><span data-l="id">Nama dan angka di video adalah contoh.</span> <a class="link" href="/portofolio/"><span data-l="en">More videos and demos</span><span data-l="id">Video dan demo lainnya</span> <span aria-hidden="true">↗</span></a></p>
 </section>
 
 <!-- ============ EXPERIENCE ============ -->
@@ -519,6 +534,6 @@
   <p>© 2026 Hadi Azhar</p>
 </footer>
 
-<script src="main.js?v=18" defer></script>
+<script src="main.js?v=20" defer></script>
 </body>
 </html>
