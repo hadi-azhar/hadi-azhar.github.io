@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=21">
+<link rel="stylesheet" href="style.css?v=22">
 <script>
   // Pick language before first paint so nothing flickers.
   (function () {
@@ -156,7 +156,7 @@
   </div>
 
   <!-- PROJECT: JOB AGENT -->
-  <article class="project feature" aria-labelledby="p1-h">
+  <article class="project feature acc-violet" aria-labelledby="p1-h">
     <header class="p-head">
       <span class="p-num" aria-hidden="true">01</span>
       <ul class="p-meta"><li><span data-l="en">Automation</span><span data-l="id">Otomasi</span></li><li>Claude</li><li>2026</li></ul>
@@ -168,13 +168,13 @@
       <span data-l="id">Situs lowongan cuma menampilkan judul dan kota. Yang penting justru ada di tulisan kecil: syarat ijazah, syarat bahasa, syarat visa, biaya "starter kit". Tiap pagi sistem ini mengumpulkan iklan dari banyak sumber dan membaca tiap iklan sampai habis. Yang sampai ke saya cuma yang memang mungkin saya dapat. Ketuk satu langkah untuk lihat kerjanya.</span>
     </p>
     <figure class="ja-video">
-      <button type="button" class="vbox wide" aria-label="Turn sound on: each agent at work" data-name-en="each agent at work" data-name-id="tiap agen saat bekerja">
-        <video muted loop playsinline preload="none" poster="media/job-agent-film2.jpg" width="1280" height="720">
+      <button type="button" class="vbox wide" aria-label="Turn sound on: each agent at work" data-name-en="each agent at work" data-name-id="tiap agent saat bekerja">
+        <video muted loop playsinline preload="none" poster="media/job-agent-poster.jpg" width="1280" height="720">
           <source src="media/job-agent-film2.mp4" type="video/mp4">
         </video>
         <span class="snd" aria-hidden="true">Sound</span>
       </button>
-      <figcaption><span data-l="en">One morning in 33 seconds: the agents search, read, score and check the inbox while I sleep, and the forms behind a login or CAPTCHA wait for me. Companies, adverts and emails in it are made up.</span><span data-l="id">Satu pagi dalam 33 detik: agen-agennya mencari, membaca, menilai, dan mengecek inbox selagi saya tidur, dan form yang butuh login atau CAPTCHA menunggu saya. Perusahaan, iklan, dan email di video ini rekaan.</span></figcaption>
+      <figcaption><span data-l="en">One morning in 33 seconds: the agents search, read, score and check the inbox while I sleep, and the forms behind a login or CAPTCHA wait for me. Companies, adverts and emails in it are made up.</span><span data-l="id">Satu pagi dalam 33 detik: para agent mencari, membaca, menilai, dan mengecek inbox selagi saya tidur, dan form yang butuh login atau CAPTCHA menunggu saya. Perusahaan, iklan, dan email di video ini rekaan.</span></figcaption>
     </figure>
 
     <figure class="net" aria-label="Diagram: two sources feed one shortlist. A morning script scans job feeds and passes them through tested rules; separately, AI research agents search the web. The shortlist goes to Jodi, who reads each advert, then Citra, who scores it against the CV, and finally to Hadi, who decides.">
@@ -200,7 +200,7 @@
     </figure>
 
     <div class="flow" data-flow>
-      <div class="flow-steps" role="tablist" aria-label="Steps">
+      <div class="flow-steps" role="tablist" aria-label="Job-search system steps" data-aria-en="Job-search system steps" data-aria-id="Langkah sistem cari kerja">
         <button role="tab" id="st-1" aria-controls="sp-1" aria-selected="true" tabindex="0"><span class="n">1</span><span data-l="en">Scan</span><span data-l="id">Scan</span></button>
         <button role="tab" id="st-2" aria-controls="sp-2" aria-selected="false" tabindex="-1"><span class="n">2</span><span data-l="en">Rules</span><span data-l="id">Aturan</span></button>
         <button role="tab" id="st-3" aria-controls="sp-3" aria-selected="false" tabindex="-1"><span class="n">3</span><span data-l="en">Research</span><span data-l="id">Riset</span></button>
@@ -326,60 +326,216 @@
         </dl>
       </section>
     </div>
+    <footer class="p-foot">
+      <section class="edge-wrap" aria-labelledby="p1-edge">
+        <h4 id="p1-edge"><span data-l="en">What sets it apart</span><span data-l="id">Yang membedakan</span></h4>
+        <ul class="edge">
+          <li><b><span data-l="en">Every verdict comes with a quote.</span><span data-l="id">Tiap putusan ada kutipannya.</span></b> <span data-l="en">Jodi can't mark an advert without the sentence that proves it.</span><span data-l="id">Jodi tidak bisa memberi putusan tanpa kalimat yang membuktikannya.</span></li>
+          <li><b><span data-l="en">AI only where it helps.</span><span data-l="id">AI cuma dipakai kalau memang perlu.</span></b> <span data-l="en">The morning scan and the rules are plain code. AI does the reading and the scoring.</span><span data-l="id">Scan pagi dan aturannya kode biasa. AI kebagian membaca dan menilai.</span></li>
+          <li><b><span data-l="en">Rules with tests.</span><span data-l="id">Aturan yang dites.</span></b> <span data-l="en">65 cases from real adverts guard every rule change.</span><span data-l="id">65 kasus dari iklan asli menjaga tiap perubahan aturan.</span></li>
+          <li><b><span data-l="en">I press submit.</span><span data-l="id">Saya yang menekan kirim.</span></b> <span data-l="en">No agent applies for jobs or creates accounts.</span><span data-l="id">Tidak ada agent yang melamar atau bikin akun.</span></li>
+        </ul>
+      </section>
+      <details class="making">
+        <summary><span data-l="en">How this film was made</span><span data-l="id">Cara film ini dibuat</span></summary>
+        <ol class="make-steps">
+          <li><span data-l="en">A storyboard first: every shot, line and transition written down.</span><span data-l="id">Storyboard dulu: tiap shot, teks, dan transisi ditulis lengkap.</span></li>
+          <li><span data-l="en">A few sample stills, approved before the full render.</span><span data-l="id">Beberapa gambar contoh, disetujui dulu sebelum render penuh.</span></li>
+          <li><span data-l="en">Nothing is filmed. Each frame is an HTML page, and Playwright renders them one by one.</span><span data-l="id">Tidak ada yang direkam kamera. Tiap frame adalah halaman HTML, lalu Playwright merendernya satu per satu.</span></li>
+          <li><span data-l="en">The music is synthesized in Python with numpy.</span><span data-l="id">Musiknya disintesis di Python dengan numpy.</span></li>
+        </ol>
+        <p class="make-meta"><span data-l="en">1,005 frames · 30 fps · opens on leaf shadows on a wall</span><span data-l="id">1.005 frame · 30 fps · dibuka dengan bayangan daun di tembok</span></p>
+      </details>
+    </footer>
   </article>
 
-  <!-- SMALLER PROJECTS: one row each -->
+  <!-- PROJECT: MONEY DASHBOARD -->
+  <article class="project feature acc-gold" aria-labelledby="p2-h">
+    <header class="p-head">
+      <span class="p-num" aria-hidden="true">02</span>
+      <ul class="p-meta"><li>Dashboard</li><li>Claude</li><li>EUR + IDR</li></ul>
+      <span class="badge"><span data-l="en">One HTML file</span><span data-l="id">Satu file HTML</span></span>
+    </header>
+    <h3 id="p2-h"><span data-l="en">A money dashboard in two currencies</span><span data-l="id">Dashboard keuangan dua mata uang</span></h3>
+    <p class="prose">
+      <span data-l="en">I made this while working in Slovakia and sending money home. My pay was in euro, home runs on rupiah. Savings, loans and goals now sit on one screen in both currencies. Tap a step to see how it fits together.</span>
+      <span data-l="id">Saya bikin ini waktu kerja di Slovakia sambil kirim uang ke rumah. Gaji saya dalam euro, kebutuhan di rumah dalam rupiah. Sekarang tabungan, pinjaman, dan target ada di satu layar, dalam dua mata uang. Ketuk satu langkah untuk lihat cara kerjanya.</span>
+    </p>
+    <figure class="ja-video">
+      <button type="button" class="vbox wide" aria-label="Turn sound on: money dashboard video, sample numbers" data-name-en="money dashboard video, sample numbers" data-name-id="video dashboard keuangan, angka contoh">
+        <video muted loop playsinline preload="none" poster="media/finance-poster.jpg" width="1280" height="720">
+          <source src="media/finance-film2.mp4" type="video/mp4">
+        </video>
+        <span class="snd" aria-hidden="true">Sound</span>
+      </button>
+      <figcaption><span data-l="en">30 seconds: paid in euro, living in rupiah, one screen for both. Every number in the video is a sample.</span><span data-l="id">30 detik: gaji dalam euro, hidup dalam rupiah, satu layar untuk keduanya. Semua angka di video ini angka contoh.</span></figcaption>
+    </figure>
+
+    <div class="flow" data-flow>
+      <div class="flow-steps" role="tablist" aria-label="Money dashboard steps" data-aria-en="Money dashboard steps" data-aria-id="Langkah dashboard keuangan" style="--n:5">
+        <button role="tab" id="ft-1" aria-controls="fp-1" aria-selected="true" tabindex="0"><span class="n">1</span><span data-l="en">Two currencies</span><span data-l="id">Dua mata uang</span></button>
+        <button role="tab" id="ft-2" aria-controls="fp-2" aria-selected="false" tabindex="-1"><span class="n">2</span><span data-l="en">One screen</span><span data-l="id">Satu layar</span></button>
+        <button role="tab" id="ft-3" aria-controls="fp-3" aria-selected="false" tabindex="-1"><span class="n">3</span><span>EUR/IDR</span></button>
+        <button role="tab" id="ft-4" aria-controls="fp-4" aria-selected="false" tabindex="-1"><span class="n">4</span><span data-l="en">Goals</span><span data-l="id">Target</span></button>
+        <button role="tab" id="ft-5" aria-controls="fp-5" aria-selected="false" tabindex="-1"><span class="n">5</span><span data-l="en">Ask</span><span data-l="id">Tanya</span></button>
+      </div>
+
+      <div class="flow-panel" role="tabpanel" id="fp-1" aria-labelledby="ft-1">
+        <p><span data-l="en">Before this, I checked several places and did the conversion in my head.</span><span data-l="id">Sebelumnya saya cek beberapa tempat dan menghitung kursnya di kepala.</span></p>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="fp-2" aria-labelledby="ft-2" hidden>
+        <p><span data-l="en">Savings, loans and goals live together. Five pages in one side menu:</span><span data-l="id">Tabungan, pinjaman, dan target ada di satu tempat. Lima halaman dalam satu menu:</span></p>
+        <ul class="rail">
+          <li>Home</li><li>Money</li><li class="on">Debts <small><span data-l="en">EUR/IDR switch</span><span data-l="id">tombol EUR/IDR</span></small></li><li>Goals</li><li>AI</li>
+        </ul>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="fp-3" aria-labelledby="ft-3" hidden>
+        <p><span data-l="en">In the real dashboard the EUR/IDR switch sits on the Debts page. Here it runs on the sample numbers from the video.</span><span data-l="id">Di dashboard aslinya, tombol EUR/IDR ada di halaman Debts. Di sini tombolnya dipakai untuk angka contoh dari video.</span></p>
+        <div class="fx" data-fx>
+          <div class="fx-switch" role="group" aria-label="Currency" data-aria-en="Currency" data-aria-id="Mata uang">
+            <button type="button" data-fx-set="eur" aria-pressed="true">EUR</button>
+            <button type="button" data-fx-set="idr" aria-pressed="false">IDR</button>
+          </div>
+          <dl class="fx-rows" aria-live="polite">
+            <div><dt><span data-l="en">Net worth</span><span data-l="id">Kekayaan bersih</span></dt><dd data-eur="4280.50" data-idr="77691075">€4,280.50</dd></div>
+            <div><dt><span data-l="en">Salary in</span><span data-l="id">Gaji masuk</span></dt><dd data-eur="1850" data-idr="33577500">€1,850.00</dd></div>
+            <div><dt><span data-l="en">Loan left</span><span data-l="id">Sisa pinjaman</span></dt><dd data-eur="132.23" data-idr="2400000">€132.23</dd></div>
+          </dl>
+          <p class="fx-note"><span data-l="en">Sample numbers · sample rate 1&nbsp;€&nbsp;=&nbsp;Rp&nbsp;18,150</span><span data-l="id">Angka contoh · kurs contoh 1&nbsp;€&nbsp;=&nbsp;Rp&nbsp;18.150</span></p>
+        </div>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="fp-4" aria-labelledby="ft-4" hidden>
+        <p><span data-l="en">Goals get their own page, in euro or in rupiah, so I can see how close each one is.</span><span data-l="id">Target punya halaman sendiri, dalam euro atau rupiah, jadi kelihatan seberapa dekat masing-masing.</span></p>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="fp-5" aria-labelledby="ft-5" hidden>
+        <p><span data-l="en">The AI page is a chat about my own numbers. I ask for advice there, and I can update figures by telling it what changed.</span><span data-l="id">Halaman AI isinya chat soal angka saya sendiri. Di situ saya bisa minta saran, dan cukup bilang apa yang berubah, angkanya ikut diperbarui.</span></p>
+      </div>
+    </div>
+
+    <footer class="p-foot">
+      <section class="edge-wrap" aria-labelledby="p2-edge">
+        <h4 id="p2-edge"><span data-l="en">What sets it apart</span><span data-l="id">Yang membedakan</span></h4>
+        <ul class="edge">
+          <li><b><span data-l="en">Both currencies, one picture.</span><span data-l="id">Dua mata uang, satu gambaran.</span></b> <span data-l="en">No converting in my head before a decision.</span><span data-l="id">Tidak perlu hitung kurs di kepala sebelum memutuskan sesuatu.</span></li>
+          <li><b><span data-l="en">One file.</span><span data-l="id">Satu file.</span></b> <span data-l="en">The whole dashboard is a single HTML file.</span><span data-l="id">Seluruh dashboard cuma satu file HTML.</span></li>
+          <li><b><span data-l="en">Quick to read.</span><span data-l="id">Cepat dibaca.</span></b> <span data-l="en">Built to answer one question when I open it: where do things stand?</span><span data-l="id">Dibuat untuk menjawab satu pertanyaan tiap kali dibuka: posisinya sekarang gimana?</span></li>
+        </ul>
+        <h4 class="built-h"><span data-l="en">How it was built</span><span data-l="id">Cara membangunnya</span></h4>
+        <p class="built"><span data-l="en">The look and the rules are written down in two short docs, DESIGN.md and PRODUCT.md, and Claude builds to them. Dark, because I open it in the evening on my phone. One amber accent, and every data colour has a fixed meaning. WCAG AA and reduced motion are part of the rules.</span><span data-l="id">Tampilan dan aturannya ditulis di dua dokumen pendek, DESIGN.md dan PRODUCT.md, dan Claude membangun mengikuti itu. Gelap, karena saya membukanya malam hari di ponsel. Satu aksen amber, dan tiap warna data punya arti tetap. WCAG AA dan reduced motion masuk ke aturannya.</span></p>
+      </section>
+      <details class="making">
+        <summary><span data-l="en">How this film was made</span><span data-l="id">Cara film ini dibuat</span></summary>
+        <ol class="make-steps">
+          <li><span data-l="en">A storyboard first, with every number in it made up and checked to add up.</span><span data-l="id">Storyboard dulu, dengan semua angka rekaan yang sudah dicek supaya hitungannya cocok.</span></li>
+          <li><span data-l="en">Same method as the job-agent film above: stills approved first, HTML frames rendered by Playwright, music made in Python with numpy.</span><span data-l="id">Cara yang sama dengan film job agent di atas: gambar contoh disetujui dulu, frame HTML dirender Playwright, musik dibuat di Python dengan numpy.</span></li>
+        </ol>
+        <p class="make-meta"><span data-l="en">900 frames · 30 fps · opens on light through window blinds</span><span data-l="id">900 frame · 30 fps · dibuka dengan cahaya lewat kerai jendela</span></p>
+      </details>
+    </footer>
+  </article>
+
+  <!-- PROJECT: AVA -->
+  <article class="project feature acc-aqua" aria-labelledby="p3-h">
+    <header class="p-head">
+      <span class="p-num" aria-hidden="true">03</span>
+      <ul class="p-meta"><li><span data-l="en">AI assistant</span><span data-l="id">Asisten AI</span></li><li>Telegram, Railway, Gemini, Claude</li></ul>
+      <span class="badge"><span data-l="en">Since 2 Jul 2026</span><span data-l="id">Sejak 2 Jul 2026</span></span>
+    </header>
+    <h3 id="p3-h"><span data-l="en">Ava, a personal AI assistant in one Telegram chat</span><span data-l="id">Ava, asisten AI pribadi dalam satu chat Telegram</span></h3>
+    <p class="prose">
+      <span data-l="en">I talk to Ava in one Telegram chat. It runs on Railway, not on my laptop. Everyday chat, photos and files go to Gemini. When I type <code>agent &lt;name&gt;: &lt;task&gt;</code>, a Claude agent takes the job. No router guesses between Gemini and Claude: the command decides. Tap a message type to follow its path.</span>
+      <span data-l="id">Saya ngobrol dengan Ava di satu chat Telegram. Dia jalan di Railway, bukan di laptop saya. Obrolan sehari-hari, foto, dan file dijawab Gemini. Kalau saya ketik <code>agent &lt;nama&gt;: &lt;tugas&gt;</code>, agent Claude yang mengerjakan. Tidak ada router yang menebak harus pakai Gemini atau Claude. Perintahnya yang menentukan. Ketuk satu jenis pesan untuk lihat jalurnya.</span>
+    </p>
+    <figure class="ja-video">
+      <button type="button" class="vbox wide" aria-label="Turn sound on: Ava assistant video, sample chat" data-name-en="Ava assistant video, sample chat" data-name-id="video asisten Ava, chat contoh">
+        <video muted loop playsinline preload="none" poster="media/ava-poster.jpg" width="1280" height="720">
+          <source src="media/ava-film2.mp4" type="video/mp4">
+        </video>
+        <span class="snd" aria-hidden="true">Sound</span>
+      </button>
+      <figcaption><span data-l="en">31 seconds, one night: a message comes in, an agent picks up the task, and the daily cap stops Claude at 20 calls. The chat in the video is made up.</span><span data-l="id">31 detik, satu malam: pesan masuk, agent mengerjakan tugasnya, dan batas harian menghentikan Claude di 20 panggilan. Isi chat di video ini rekaan.</span></figcaption>
+    </figure>
+
+    <div class="flow" data-flow data-active="chat">
+      <div class="flow-steps" role="tablist" aria-label="Ava message paths" data-aria-en="Ava message paths" data-aria-id="Jalur pesan Ava" style="--n:5">
+        <button role="tab" id="at-1" aria-controls="ap-1" aria-selected="true" tabindex="0" data-key="chat"><span class="n">1</span><span data-l="en">Chat</span><span data-l="id">Obrolan</span></button>
+        <button role="tab" id="at-2" aria-controls="ap-2" aria-selected="false" tabindex="-1" data-key="file"><span class="n">2</span><span data-l="en">Photo or file</span><span data-l="id">Foto atau file</span></button>
+        <button role="tab" id="at-3" aria-controls="ap-3" aria-selected="false" tabindex="-1" data-key="agent"><span class="n">3</span><span data-l="en"><code>agent name:</code></span><span data-l="id"><code>agent nama:</code></span></button>
+        <button role="tab" id="at-4" aria-controls="ap-4" aria-selected="false" tabindex="-1" data-key="lite"><span class="n">4</span><span data-l="en">Gemini limit</span><span data-l="id">Limit Gemini</span></button>
+        <button role="tab" id="at-5" aria-controls="ap-5" aria-selected="false" tabindex="-1" data-key="cap"><span class="n">5</span><span data-l="en">Claude cap</span><span data-l="id">Batas Claude</span></button>
+      </div>
+
+      <ol class="route" aria-hidden="true">
+        <li><span class="r-node" data-on="chat file agent lite cap">Telegram</span></li>
+        <li><span class="r-node" data-on="chat file agent lite cap">bot.py · Railway</span></li>
+        <li class="r-fork">
+          <span class="r-branches">
+            <span class="r-or"><span data-l="en">one of:</span><span data-l="id">salah satu:</span></span>
+            <span class="r-node" data-on="chat file">Gemini</span>
+            <span class="r-node" data-on="lite">Gemini lite</span>
+            <span class="r-node r-claude" data-on="agent cap"><span data-l="en">Claude agent</span><span data-l="id">agent Claude</span> <small class="r-stop"><span data-l="en">stopped · 20/20</span><span data-l="id">berhenti · 20/20</span></small></span>
+          </span>
+        </li>
+      </ol>
+
+      <div class="flow-panel" role="tabpanel" id="ap-1" aria-labelledby="at-1">
+        <p><span data-l="en">A normal message goes from Telegram to the bot on Railway, then to Gemini. The last 60 messages, kept in SQLite, travel along so it knows what we were talking about.</span><span data-l="id">Pesan biasa jalan dari Telegram ke bot di Railway, lalu ke Gemini. 60 pesan terakhir yang disimpan di SQLite ikut dibawa, jadi dia tahu kita lagi ngomongin apa.</span></p>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="ap-2" aria-labelledby="at-2" hidden>
+        <p><span data-l="en">Photos and files go the same way. Gemini reads them right there in the chat.</span><span data-l="id">Foto dan file lewat jalur yang sama. Gemini membacanya langsung di chat itu.</span></p>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="ap-3" aria-labelledby="at-3" hidden>
+        <p><span data-l="en">A message that starts with <code>agent &lt;name&gt;:</code> goes to a Claude agent instead. I choose the agent by name. I added this about a week after the first version: Gemini from 2 Jul 2026, Claude agents around 8 Jul.</span><span data-l="id">Pesan yang diawali <code>agent &lt;nama&gt;:</code> dikirim ke agent Claude. Saya sendiri yang memilih agent-nya lewat nama. Fitur ini saya tambahkan sekitar seminggu setelah versi pertama: Gemini sejak 2 Jul 2026, agent Claude sekitar 8 Jul.</span></p>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="ap-4" aria-labelledby="at-4" hidden>
+        <p><span data-l="en">If Gemini answers with a 429 (too many requests), Ava switches to a lite model and still replies, instead of going quiet.</span><span data-l="id">Kalau Gemini membalas 429 (terlalu banyak permintaan), Ava pindah ke model lite, jadi tetap membalas dan tidak diam saja.</span></p>
+      </div>
+      <div class="flow-panel" role="tabpanel" id="ap-5" aria-labelledby="at-5" hidden>
+        <p><span data-l="en">Every Claude call is counted. After 20 in a day, agent tasks stop until the next day, so a busy day can't turn into a big bill.</span><span data-l="id">Tiap panggilan Claude dihitung. Setelah 20 kali dalam sehari, tugas agent berhenti sampai besok, jadi hari yang sibuk tidak berubah jadi tagihan besar.</span></p>
+        <p class="cap-meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>20/20</b></p>
+      </div>
+    </div>
+
+    <footer class="p-foot">
+      <section class="edge-wrap" aria-labelledby="p3-edge">
+        <h4 id="p3-edge"><span data-l="en">What sets it apart</span><span data-l="id">Yang membedakan</span></h4>
+        <ul class="edge">
+          <li><b><span data-l="en">A hard daily cap.</span><span data-l="id">Batas harian yang tegas.</span></b> <span data-l="en">Gemini keeps chatting; only the Claude agents stop.</span><span data-l="id">Gemini tetap bisa diajak ngobrol, cuma agent Claude yang berhenti.</span></li>
+          <li><b><span data-l="en">I choose the brain.</span><span data-l="id">Saya yang memilih otaknya.</span></b> <span data-l="en">Nothing guesses between Gemini and Claude. Plain messages go to Gemini, <code>agent</code> commands go to Claude.</span><span data-l="id">Tidak ada yang menebak antara Gemini dan Claude. Pesan biasa ke Gemini, perintah <code>agent</code> ke Claude.</span></li>
+          <li><b><span data-l="en">Memory I can open.</span><span data-l="id">Ingatan yang bisa saya buka.</span></b> <span data-l="en">Notes are markdown files in a vault synced to GitHub. A regular reflection reads recent chat and adds what is worth keeping.</span><span data-l="id">Catatannya file markdown di vault yang disinkron ke GitHub. Refleksi berkala membaca obrolan terbaru dan menambahkan yang layak disimpan.</span></li>
+        </ul>
+        <h4 class="built-h"><span data-l="en">How it was built</span><span data-l="id">Cara membangunnya</span></h4>
+        <p class="built"><span data-l="en">Railway has no git, so the vault syncs to GitHub through GitHub's API, one file per change. When the bot starts, it pulls the vault from GitHub first, so notes I edit on my laptop reach Ava too.</span><span data-l="id">Di Railway tidak ada git, jadi vault disinkron ke GitHub lewat API GitHub, satu file per perubahan. Saat bot menyala, vault ditarik dulu dari GitHub, jadi catatan yang saya ubah di laptop ikut sampai ke Ava.</span></p>
+      </section>
+      <details class="making">
+        <summary><span data-l="en">How this film was made</span><span data-l="id">Cara film ini dibuat</span></summary>
+        <ol class="make-steps">
+          <li><span data-l="en">A storyboard first, with every line checked against the bot's code, so the film claims nothing the bot doesn't do.</span><span data-l="id">Storyboard dulu, tiap kalimatnya dicek ke kode bot, supaya filmnya tidak mengklaim hal yang tidak dilakukan bot.</span></li>
+          <li><span data-l="en">Same method as the job-agent film above: stills approved first, HTML frames rendered by Playwright, music made in Python with numpy.</span><span data-l="id">Cara yang sama dengan film job agent di atas: gambar contoh disetujui dulu, frame HTML dirender Playwright, musik dibuat di Python dengan numpy.</span></li>
+        </ol>
+        <p class="make-meta"><span data-l="en">945 frames · 30 fps · opens on a rainy window at night</span><span data-l="id">945 frame · 30 fps · dibuka dengan jendela hujan di malam hari</span></p>
+      </details>
+    </footer>
+  </article>
+
+  <!-- PROJECT: HAZA (compact row) -->
   <div class="plist">
-    <article class="project prow" aria-labelledby="p3-h">
+    <article class="project prow" aria-labelledby="p4-h">
       <a class="shot" href="https://haza.pages.dev/" target="_blank" rel="noopener">
         <img src="img/haza.jpg" alt="HAZA shop homepage" width="1280" height="800" loading="lazy">
       </a>
       <div class="prow-body">
         <header class="p-head">
-          <span class="p-num" aria-hidden="true">02</span>
+          <span class="p-num" aria-hidden="true">04</span>
           <ul class="p-meta"><li><span data-l="en">Live website</span><span data-l="id">Website live</span></li><li>Claude, WhatsApp, Google Sheets</li></ul>
         </header>
-        <h3 id="p3-h"><span data-l="en">A live shop website with WhatsApp orders</span><span data-l="id">Website toko live, pesanan lewat WhatsApp</span></h3>
-        <p class="prose"><span data-l="en">For HAZA, a clothing brand I'm starting. The basket turns into a ready-written WhatsApp order, and the waitlist form saves each email into a Google Sheet, with no server to pay for.</span><span data-l="id">Untuk HAZA, merek pakaian yang sedang saya rintis. Keranjang belanja berubah jadi pesan WhatsApp yang sudah tertulis rapi, dan formulir daftar tunggu menyimpan tiap email ke Google Sheet, tanpa server yang harus dibayar.</span></p>
-        <p class="links"><a class="link" href="https://haza.pages.dev/" target="_blank" rel="noopener">haza.pages.dev <span aria-hidden="true">↗</span></a></p>
-      </div>
-    </article>
-
-    <article class="project prow flip" aria-labelledby="p4-h">
-      <figure class="shot vid">
-        <button type="button" class="vbox wide" aria-label="Turn sound on: money dashboard video, sample numbers" data-name-en="money dashboard video, sample numbers" data-name-id="video dashboard keuangan, angka contoh">
-          <video muted loop playsinline preload="none" poster="media/finance-film2.jpg" width="1280" height="720">
-            <source src="media/finance-film2.mp4" type="video/mp4">
-          </video>
-          <span class="snd" aria-hidden="true">Sound</span>
-        </button>
-      </figure>
-      <div class="prow-body">
-        <header class="p-head">
-          <span class="p-num" aria-hidden="true">03</span>
-          <ul class="p-meta"><li>Dashboard</li><li>Claude</li><li>EUR + IDR</li></ul>
-        </header>
-        <h3 id="p4-h"><span data-l="en">A money dashboard in two currencies</span><span data-l="id">Dashboard keuangan dua mata uang</span></h3>
-        <p class="prose"><span data-l="en">Made while working in Slovakia and sending money home: savings, loans and goals in euro and rupiah on one screen. Screenshot uses sample numbers.</span><span data-l="id">Dibuat waktu kerja di Slovakia dan mengirim uang ke rumah: tabungan, pinjaman, dan target dalam euro dan rupiah di satu layar. Tangkapan layar pakai angka contoh.</span></p>
-      </div>
-    </article>
-
-    <article class="project prow" aria-labelledby="p2-h">
-      <figure class="shot vid">
-        <button type="button" class="vbox wide" aria-label="Turn sound on: Ava assistant video, sample chat" data-name-en="Ava assistant video, sample chat" data-name-id="video asisten Ava, chat contoh">
-          <video muted loop playsinline preload="none" poster="media/ava-film2.jpg" width="1280" height="720">
-            <source src="media/ava-film2.mp4" type="video/mp4">
-          </video>
-          <span class="snd" aria-hidden="true">Sound</span>
-        </button>
-      </figure>
-      <div class="prow-body">
-        <header class="p-head">
-          <span class="p-num" aria-hidden="true">04</span>
-          <ul class="p-meta"><li><span data-l="en">AI assistant</span><span data-l="id">Asisten AI</span></li><li>Telegram, Railway, Gemini, Claude</li></ul>
-        </header>
-        <h3 id="p2-h"><span data-l="en">Ava, a personal AI assistant</span><span data-l="id">Ava, asisten AI pribadi</span></h3>
-        <p class="prose"><span data-l="en">A Telegram bot that runs online on Railway. Everyday chat goes to Gemini; bigger tasks go to Claude agents when I ask for one. It keeps notes, so it remembers earlier conversations. The part I asked for most: a daily cap on Claude calls, so it stops instead of running up a bill.</span><span data-l="id">Bot Telegram yang jalan online di Railway. Obrolan sehari-hari dijawab Gemini; tugas yang lebih berat saya serahkan ke agen Claude kalau saya minta. Dia menyimpan catatan, jadi ingat obrolan sebelumnya. Yang paling saya minta: batas harian panggilan Claude, biar dia berhenti dan tagihan tidak menumpuk.</span></p>
+        <h3 id="p4-h"><span data-l="en">A live shop website with WhatsApp orders</span><span data-l="id">Website toko live, pesanan lewat WhatsApp</span></h3>
+        <p class="prose"><span data-l="en">For HAZA, a clothing brand I'm starting. No server to pay for.</span><span data-l="id">Untuk HAZA, merek pakaian yang sedang saya rintis. Tanpa server yang harus dibayar.</span></p>
+        <ul class="mini-flow">
+          <li><span><b><span data-l="en">Basket</span><span data-l="id">Keranjang</span></b> <span data-l="en">turns into a ready-written WhatsApp order.</span><span data-l="id">berubah jadi pesan WhatsApp yang sudah tertulis rapi.</span></span></li>
+          <li><span><b><span data-l="en">Waitlist</span><span data-l="id">Daftar tunggu</span></b> <span data-l="en">saves each email into a Google Sheet.</span><span data-l="id">menyimpan tiap email ke Google Sheet.</span></span></li>
+        </ul>
+        <p class="links"><a class="link" href="https://haza.pages.dev/" target="_blank" rel="noopener"><span data-l="en">Open the shop</span><span data-l="id">Buka tokonya</span> haza.pages.dev <span aria-hidden="true">↗</span></a></p>
       </div>
     </article>
   </div>
@@ -547,6 +703,6 @@
   <p>© 2026 Hadi Azhar</p>
 </footer>
 
-<script src="main.js?v=21" defer></script>
+<script src="main.js?v=22" defer></script>
 </body>
 </html>

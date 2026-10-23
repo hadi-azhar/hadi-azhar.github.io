@@ -11,6 +11,11 @@
     });
     renderNumbers();
     renderCats();
+    if (typeof renderFx === 'function') renderFx(false);
+    // Widget labels that only screen readers hear follow the language too.
+    document.querySelectorAll('[data-aria-en]').forEach(function (el) {
+      el.setAttribute('aria-label', el.getAttribute(l === 'id' ? 'data-aria-id' : 'data-aria-en'));
+    });
     if (typeof relabelVideos === 'function') relabelVideos();
   }
   function setLang(l) {
@@ -24,28 +29,57 @@
   function fmt(n) { return Number(n).toLocaleString(root.lang === 'id' ? 'id-ID' : 'en-US'); }
 
   // ---------- Flow tabs ----------
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.flow-steps [role="tab"]'));
-  function select(tab, fromKeyboard) {
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      var panel = document.getElementById(t.getAttribute('aria-controls'));
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-      // Arrowing through six stages should feel instant, so keyboard switches skip the fade.
-      panel.style.animation = fromKeyboard ? 'none' : '';
-      panel.hidden = !on;
+  // Each tablist (one per project) is its own group: arrows cycle inside it, panels only toggle inside it.
+  document.querySelectorAll('.flow-steps[role="tablist"]').forEach(function (list) {
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    var flow = list.closest('.flow');
+    function select(tab, fromKeyboard) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        // Arrowing through the steps should feel instant, so keyboard switches skip the fade.
+        panel.style.animation = fromKeyboard ? 'none' : '';
+        panel.hidden = !on;
+      });
+      // Lets a diagram next to the tabs (Ava's message path) follow the selected step.
+      if (flow && tab.dataset.key) flow.dataset.active = tab.dataset.key;
+      if (fromKeyboard) tab.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t, false); });
+      t.addEventListener('keydown', function (e) {
+        var j = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % tabs.length;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + tabs.length) % tabs.length;
+        if (e.key === 'Home') j = 0;
+        if (e.key === 'End') j = tabs.length - 1;
+        if (j !== null) { e.preventDefault(); select(tabs[j], true); }
+      });
     });
-    if (fromKeyboard) tab.focus();
+  });
+
+  // ---------- Currency switch demo (money dashboard, sample numbers) ----------
+  var fxCur = 'eur';
+  function renderFx(animate) {
+    document.querySelectorAll('[data-fx]').forEach(function (box) {
+      box.querySelectorAll('[data-fx-set]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.fxSet === fxCur));
+      });
+      box.querySelectorAll('dd[data-eur]').forEach(function (dd) {
+        var loc = root.lang === 'id' ? 'id-ID' : 'en-US';
+        dd.textContent = fxCur === 'eur'
+          ? '€' + Number(dd.dataset.eur).toLocaleString(loc, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+          : 'Rp ' + Number(dd.dataset.idr).toLocaleString(loc, { maximumFractionDigits: 0 });
+        if (animate) { dd.classList.remove('flip'); void dd.offsetWidth; dd.classList.add('flip'); }
+      });
+    });
   }
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(t, false); });
-    t.addEventListener('keydown', function (e) {
-      var j = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % tabs.length;
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + tabs.length) % tabs.length;
-      if (e.key === 'Home') j = 0;
-      if (e.key === 'End') j = tabs.length - 1;
-      if (j !== null) { e.preventDefault(); select(tabs[j], true); }
+  document.querySelectorAll('[data-fx-set]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (fxCur === b.dataset.fxSet) return;
+      fxCur = b.dataset.fxSet; renderFx(true);
     });
   });
 
@@ -198,47 +232,50 @@
   if (!('IntersectionObserver' in window) || reduceMotion) {
     if (cats) cats.classList.add('in');
     if (chat) chat.classList.add('done');
-    return;
+  } else {
+    setupReveals();
   }
 
-  // Chat and numbers play once, the first time they are on screen.
-  // Hide the messages straight away so they do not flash before the replay starts.
-  if (chat) chat.classList.add('playing');
-  var once = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      once.unobserve(e.target);
-      if (e.target === chat) play(); else countUp();
-    });
-  }, { threshold: 0.35 });
-  if (chat) once.observe(chat);
-  var statsBox = document.querySelector('.stats');
-  if (statsBox) once.observe(statsBox);
-  // Safety net: some embedded or throttled browsers never fire the observer. Never leave the
-  // hero chat empty: if it has not started 1.5 s after load, play it anyway.
-  setTimeout(function () {
-    if (chat && !timers.length && !chat.classList.contains('done')) { once.unobserve(chat); play(); }
-  }, 1500);
-  // Document order matters: when one block shows, every block above it shows too, so a
-  // nav jump that skips past a section (no intersection ever fires for it) never leaves it hidden.
-  var targets = Array.prototype.slice.call(document.querySelectorAll(
-    '.how-list, .section-head, .feature, .net, .cats, .plist > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
-  targets.forEach(function (el) { if (el !== cats) el.classList.add('reveal'); });
+  function setupReveals() {
+    // Chat and numbers play once, the first time they are on screen.
+    // Hide the messages straight away so they do not flash before the replay starts.
+    if (chat) chat.classList.add('playing');
+    var once = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        once.unobserve(e.target);
+        if (e.target === chat) play(); else countUp();
+      });
+    }, { threshold: 0.35 });
+    if (chat) once.observe(chat);
+    var statsBox = document.querySelector('.stats');
+    if (statsBox) once.observe(statsBox);
+    // Safety net: some embedded or throttled browsers never fire the observer. Never leave the
+    // hero chat empty: if it has not started 1.5 s after load, play it anyway.
+    setTimeout(function () {
+      if (chat && !timers.length && !chat.classList.contains('done')) { once.unobserve(chat); play(); }
+    }, 1500);
+    // Document order matters: when one block shows, every block above it shows too, so a
+    // nav jump that skips past a section (no intersection ever fires for it) never leaves it hidden.
+    var targets = Array.prototype.slice.call(document.querySelectorAll(
+      '.how-list, .section-head, .feature, .net, .cats, .plist > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
+    targets.forEach(function (el) { if (el !== cats) el.classList.add('reveal'); });
 
-  function show(upTo) {
-    for (var k = 0; k <= upTo; k++) {
-      if (!targets[k].classList.contains('in')) { targets[k].classList.add('in'); io.unobserve(targets[k]); }
+    function show(upTo) {
+      for (var k = 0; k <= upTo; k++) {
+        if (!targets[k].classList.contains('in')) { targets[k].classList.add('in'); io.unobserve(targets[k]); }
+      }
     }
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      // Already above the viewport (jumped past) counts as seen.
-      if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
-      show(targets.indexOf(e.target));
-    });
-  }, { threshold: [0, 0.15], rootMargin: '0px 0px -8% 0px' });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        // Already above the viewport (jumped past) counts as seen.
+        if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
+        show(targets.indexOf(e.target));
+      });
+    }, { threshold: [0, 0.15], rootMargin: '0px 0px -8% 0px' });
 
-  targets.forEach(function (el) { io.observe(el); });
+    targets.forEach(function (el) { io.observe(el); });
+  }
 
   // ---------- Videos: main sendiri tanpa suara saat terlihat. Klik: suara -> jeda -> putar dgn suara ----------
   var vids = Array.prototype.slice.call(document.querySelectorAll('.vbox video'));
