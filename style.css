@@ -520,3 +520,8 @@ body::after {
 .vbox.wide { width: 100%; max-width: 52rem; }
 .vbox.wide video { width: 100%; height: auto; aspect-ratio: 16 / 9; }
 .ja-video figcaption { margin-top: var(--s-2, .5rem); color: var(--ink-2); font-size: var(--t-xs); max-width: 62ch; }
+
+/* video di blok proyek */
+.prow .shot.vid { display: flex; align-items: center; justify-content: center; background: #0d0f14; }
+.shot.vid .vbox.wide { max-width: none; border: 0; border-radius: 0; box-shadow: none; }
+.shot.vid .vbox.wide:hover { transform: none; }

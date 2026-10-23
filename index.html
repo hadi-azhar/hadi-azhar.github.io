@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="style.css?v=21">
 <script>
   // Pick language before first paint so nothing flickers.
   (function () {
@@ -346,8 +346,13 @@
     </article>
 
     <article class="project prow flip" aria-labelledby="p4-h">
-      <figure class="shot fit">
-        <img src="img/finance.jpg" alt="Finance dashboard with sample numbers" width="1280" height="800" loading="lazy">
+      <figure class="shot vid">
+        <button type="button" class="vbox wide" aria-label="Turn sound on: money dashboard video, sample numbers" data-name-en="money dashboard video, sample numbers" data-name-id="video dashboard keuangan, angka contoh">
+          <video muted loop playsinline preload="none" poster="media/finance-film.jpg" width="1280" height="720">
+            <source src="media/finance-film.mp4" type="video/mp4">
+          </video>
+          <span class="snd" aria-hidden="true">Sound</span>
+        </button>
       </figure>
       <div class="prow-body">
         <header class="p-head">
@@ -359,14 +364,22 @@
       </div>
     </article>
 
-    <article class="project prow text-only" aria-labelledby="p2-h">
+    <article class="project prow" aria-labelledby="p2-h">
+      <figure class="shot vid">
+        <button type="button" class="vbox wide" aria-label="Turn sound on: Ava assistant video, sample chat" data-name-en="Ava assistant video, sample chat" data-name-id="video asisten Ava, chat contoh">
+          <video muted loop playsinline preload="none" poster="media/ava-film.jpg" width="1280" height="720">
+            <source src="media/ava-film.mp4" type="video/mp4">
+          </video>
+          <span class="snd" aria-hidden="true">Sound</span>
+        </button>
+      </figure>
       <div class="prow-body">
         <header class="p-head">
           <span class="p-num" aria-hidden="true">04</span>
-          <ul class="p-meta"><li><span data-l="en">AI assistant</span><span data-l="id">Asisten AI</span></li><li>Claude, Gemini</li></ul>
+          <ul class="p-meta"><li><span data-l="en">AI assistant</span><span data-l="id">Asisten AI</span></li><li>Telegram, Railway, Gemini, Claude</li></ul>
         </header>
         <h3 id="p2-h"><span data-l="en">Ava, a personal AI assistant</span><span data-l="id">Ava, asisten AI pribadi</span></h3>
-        <p class="prose"><span data-l="en">Runs online and switches between Claude and Gemini depending on the task. It keeps notes so it remembers earlier conversations. The part I asked for most: a daily spending limit, so it stops instead of running up a bill.</span><span data-l="id">Berjalan online dan berpindah antara Claude dan Gemini sesuai tugasnya. Dia menyimpan catatan, jadi ingat obrolan sebelumnya. Yang paling saya minta: batas belanja harian, biar dia berhenti dan tagihan tidak menumpuk.</span></p>
+        <p class="prose"><span data-l="en">A Telegram bot that runs online on Railway. Everyday chat goes to Gemini; bigger tasks go to Claude agents when I ask for one. It keeps notes, so it remembers earlier conversations. The part I asked for most: a daily cap on Claude calls, so it stops instead of running up a bill.</span><span data-l="id">Bot Telegram yang jalan online di Railway. Obrolan sehari-hari dijawab Gemini; tugas yang lebih berat saya serahkan ke agen Claude kalau saya minta. Dia menyimpan catatan, jadi ingat obrolan sebelumnya. Yang paling saya minta: batas harian panggilan Claude, biar dia berhenti dan tagihan tidak menumpuk.</span></p>
       </div>
     </article>
   </div>
@@ -534,6 +547,6 @@
   <p>© 2026 Hadi Azhar</p>
 </footer>
 
-<script src="main.js?v=20" defer></script>
+<script src="main.js?v=21" defer></script>
 </body>
 </html>
