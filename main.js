@@ -29,10 +29,9 @@
   function fmt(n) { return Number(n).toLocaleString(root.lang === 'id' ? 'id-ID' : 'en-US'); }
 
   // ---------- Flow tabs ----------
-  // Each tablist (one per project) is its own group: arrows cycle inside it, panels only toggle inside it.
+  // Each tablist is its own group: arrows cycle inside it, panels only toggle inside it.
   document.querySelectorAll('.flow-steps[role="tablist"]').forEach(function (list) {
     var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
-    var flow = list.closest('.flow');
     function select(tab, fromKeyboard) {
       tabs.forEach(function (t) {
         var on = t === tab;
@@ -43,8 +42,6 @@
         panel.style.animation = fromKeyboard ? 'none' : '';
         panel.hidden = !on;
       });
-      // Lets a diagram next to the tabs (Ava's message path) follow the selected step.
-      if (flow && tab.dataset.key) flow.dataset.active = tab.dataset.key;
       if (fromKeyboard) tab.focus();
     }
     tabs.forEach(function (t, i) {
@@ -112,13 +109,6 @@
       var v = data[el.dataset.num];
       if (v != null) el.textContent = fmt(v);
     });
-    document.querySelectorAll('[data-count]').forEach(function (el) {
-      var v = data[el.getAttribute('data-count')];
-      if (v != null) el.textContent = fmt(v);
-    });
-    document.querySelectorAll('[data-count-static]').forEach(function (el) {
-      el.textContent = fmt(+el.getAttribute('data-count-static'));
-    });
     document.querySelectorAll('[data-v]').forEach(function (el) {
       var v = data.verdicts[el.dataset.v];
       if (v != null) el.textContent = fmt(v);
@@ -182,20 +172,6 @@
     });
   });
 
-  // ---------- Proof numbers ----------
-  var stats = Array.prototype.slice.call(document.querySelectorAll('[data-count], [data-count-static]'));
-  function statTarget(el) {
-    return el.hasAttribute('data-count') ? data[el.getAttribute('data-count')] : +el.getAttribute('data-count-static');
-  }
-  function countUp() {
-    var t0 = performance.now(), dur = 1100;
-    (function frame(now) {
-      var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 4);
-      stats.forEach(function (el) { el.textContent = fmt(Math.round(statTarget(el) * e)); });
-      if (p < 1) requestAnimationFrame(frame);
-    })(t0);
-  }
-
   // ---------- Chat replay ----------
   var chat = document.querySelector('[data-chat]');
   var msgs = chat ? Array.prototype.slice.call(chat.querySelectorAll('.msg')) : [];
@@ -237,19 +213,17 @@
   }
 
   function setupReveals() {
-    // Chat and numbers play once, the first time they are on screen.
+    // The chat plays once, the first time it is on screen.
     // Hide the messages straight away so they do not flash before the replay starts.
     if (chat) chat.classList.add('playing');
     var once = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         once.unobserve(e.target);
-        if (e.target === chat) play(); else countUp();
+        play();
       });
     }, { threshold: 0.35 });
     if (chat) once.observe(chat);
-    var statsBox = document.querySelector('.stats');
-    if (statsBox) once.observe(statsBox);
     // Safety net: some embedded or throttled browsers never fire the observer. Never leave the
     // hero chat empty: if it has not started 1.5 s after load, play it anyway.
     setTimeout(function () {
@@ -258,7 +232,7 @@
     // Document order matters: when one block shows, every block above it shows too, so a
     // nav jump that skips past a section (no intersection ever fires for it) never leaves it hidden.
     var targets = Array.prototype.slice.call(document.querySelectorAll(
-      '.how-list, .section-head, .feature, .net, .cats, .plist > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
+      '.how, .section-head, .feature, .net, .cats, .plist > .project, .record-list, .tools-wrap, .letter blockquote, .contact-lead'));
     targets.forEach(function (el) { if (el !== cats) el.classList.add('reveal'); });
 
     function show(upTo) {
